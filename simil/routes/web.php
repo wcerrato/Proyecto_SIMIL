@@ -98,3 +98,11 @@ Route::get('/usuarios/contrasena', [App\Http\Controllers\usuarios\ContrasenaCont
 Route::put('/usuarios/contrasena', [App\Http\Controllers\usuarios\ContrasenaController::class, 'cambiar_contrasena']);
 //RUTAS MODULO DE USUARIOS
 Route::get('/usuarios/permisos', [App\Http\Controllers\usuarios\PermisosController::class, 'index']);
+
+//RUTAS MODULO DE USUARIOS - ROLES
+Route::get('/usuarios/roles', [App\Http\Controllers\usuarios\RolesController::class, 'index']);
+Route::post('/usuarios/roles', [App\Http\Controllers\usuarios\RolesController::class, 'guardar_roles']);
+Route::put('/usuarios/roles', [App\Http\Controllers\usuarios\RolesController::class, 'editar_roles']);
+
+//RUTAS MODULO DE USUARIOS - BOTACORA
+Route::get('/usuarios/bitacora', [App\Http\Controllers\usuarios\BitacoraController::class, 'index']);

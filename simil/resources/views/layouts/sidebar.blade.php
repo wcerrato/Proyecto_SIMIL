@@ -128,6 +128,8 @@
                         <h6 class="collapse-header">Modulos De Usuarios:</h6>
                         <a class="collapse-item" href="/usuarios/usuarios">Usuarios</a>
                         <a class="collapse-item" href="/usuarios/permisos">Permisos</a>
+                        <a class="collapse-item" href="/usuarios/roles">Roles</a>
+                        <a class="collapse-item" href="/usuarios/bitacora">Bitacora</a>
                     </div>
                 </div>
             </li>
