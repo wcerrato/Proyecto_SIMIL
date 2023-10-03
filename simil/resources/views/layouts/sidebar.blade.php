@@ -130,6 +130,7 @@
                         <a class="collapse-item" href="/usuarios/permisos">Permisos</a>
                         <a class="collapse-item" href="/usuarios/roles">Roles</a>
                         <a class="collapse-item" href="/usuarios/bitacora">Bitacora</a>
+                        <a class="collapse-item" href="/usuarios/recuperacion">Recuperación</a>
                     </div>
                 </div>
             </li>

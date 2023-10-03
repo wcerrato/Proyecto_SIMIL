@@ -54,8 +54,6 @@
     <label style="color: white; margin: 1%;">Listado De Usuarios</label>
 </div>
 
-<div style="margin:2%;"></div>
-
 <div id="div_listado_usuarios" name="div_listado_usuarios" style="width: 90%; margin: 0 auto;">
     
     <table style="width:90%; margin: 0 auto;" border="1" >
@@ -121,7 +119,7 @@
             <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Guardar Usuario</h5>
             </div>
-            <form action="/usuarios/usuarios" method="post">
+            <form action="/usuarios/editarUsuarios" method="post">
                 @csrf
                 <div class="modal-body">
                     @if($message = Session::get('ErrorInsert'))

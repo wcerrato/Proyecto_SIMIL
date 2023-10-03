@@ -23,12 +23,12 @@
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                     {{ session('user') }}
                 </span>
-               <img class="img-profile rounded-circle" src="{{ asset('/dash/img/undraw_profile.svg') }}">
+            <img class="img-profile rounded-circle" src="{{ asset('/dash/img/undraw_profile.svg') }}">
             </a>
             
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="/usuarios/contrasena">
+                <a class="dropdown-item" href="usuarios/editarUsuarios">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Cambiar Contraseña
                 </a>

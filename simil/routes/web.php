@@ -106,3 +106,7 @@ Route::put('/usuarios/roles', [App\Http\Controllers\usuarios\RolesController::cl
 
 //RUTAS MODULO DE USUARIOS - BOTACORA
 Route::get('/usuarios/bitacora', [App\Http\Controllers\usuarios\BitacoraController::class, 'index']);
+
+//RUTAS MODULO DE USUARIOS - RECUPERACION DE CONTRASEÑA
+Route::get('/usuarios/recuperacion', [App\Http\Controllers\usuarios\RecuperacionController::class, 'index']);
+Route::post('/usuarios/recuperacion', [App\Http\Controllers\usuarios\RecuperacionController::class, 'verificar']);

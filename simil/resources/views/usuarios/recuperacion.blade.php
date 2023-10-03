@@ -61,7 +61,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
 
-                        <h1 class="h3 mb-0 text-gray-800">Bienvenido</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Recuperacion De Contraseña</h1>
 
                     </div>
 
@@ -73,13 +73,13 @@
                         @endif    
                     </div>
 
-                    <div  id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                    <div  id="verificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesión </h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Ingrese Datos  </h5>
                                 </div>
-                                <form action="/" method="post" autocomplete="off">
+                                <form action="/usuarios/recuperacion" method="post" autocomplete="off">
                                     @csrf
                                     <div class="modal-body">
                                         @if($message = Session::get('ErrorInsert'))
@@ -95,28 +95,26 @@
                                         </div>
                                         @endif
                                         <div class="form-group">
-
-                                            <input type="text" name="usuario" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Ingresar Usuario" aria-describedby="basic-addon2">
+                                            <input type="text" name="usuario" style="width: 70%;" class="form-control custom-input shadow-sm" placeholder="Ingresar Usuario" aria-describedby="basic-addon2">
                                         </div>
+                                    <div class="form-group">
+                                    <select name="pregunta_usuario" style="width: 70%;" id="pregunta_usuario" class="form-control custom-input shadow-sm" aria-describedby="basic-addon2">
+                                    @foreach($preguntas_array[0] as $pregunta)
+                                    <option value="{{ $pregunta['COD_PREGUNTA'] }}">{{ $pregunta['PREGUNTA'] }}</option>
+                                    @endforeach
+                                    </select>
+                                    </div>
                                         <div class="form-group">
-                                            <input type="password" name="contrasena" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Ingresar Contraseña" aria-describedby="basic-addon2">
-                                        </div>
+                                        <input type="text" name="respuesta" style="width: 70%;" class="form-control custom-input shadow-sm" placeholder="Ingresar respuesta" aria-describedby="basic-addon2">
                                     </div>
+                                    </div>
+
                                     <div class="modal-footer">
-                                    <div class="d-flex justify-content-between align-items-start" style="width: 100%;">
-                                        <!-- Enlace "Olvidaste tu contraseña?" -->
-                                        <a  href="/usuarios/recuperacion" class="text-left">¿Olvidaste tu contraseña?</a>
-                                    </div>
-    
-                                        <!-- Botón "Acceder" -->
+                                        <!-- Botón "Verificar" -->
                                     <button type="submit" style="background-color: #1cc88a; color: white; min-width: 200px;" class="btn btn-sm shadow-sm">
-                                        <i class="fas fa-check-circle fa-sm text-white-50"></i> Acceder
+                                        <i class="fas fa-check-circle fa-sm text-white-50"></i> Verificar
                                     </button>
                                     </div>
-
-
-
-
                                 </form>
                             </div>
                         </div>

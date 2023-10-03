@@ -34,8 +34,8 @@ class ContrasenaController extends Controller
         
         $validator = Validator::make($request->all(),[
             
-            'contrasena' => 'required|min:5|max:50',
-            'confirmar_contrasena' => 'required|min:5|max:50'
+            'contrasena' => 'required|min:5|max:8',
+            'confirmar_contrasena' => 'required|min:5|max:8'
             
         ]);
         
@@ -51,6 +51,19 @@ class ContrasenaController extends Controller
             $usuarios = HTTP::get('http://127.0.0.1:9000/api/simil/usuario');
             $usuarios_array = $usuarios->json();
             foreach($usuarios_array[0] AS $usuario){
+
+                $contrasena_actual = ''; // Inicializar con un valor vacío
+                foreach ($usuarios_array[0] as $usuario) {
+                    if ($usuario['COD_USUARIO'] == session('user')) {
+                        $contrasena_actual = $usuario['CONTRASEÑA'];
+                        break; // Terminar el bucle una vez encontrada la contraseña
+                    }
+                }
+            
+                // Verificar que la nueva contraseña sea diferente de la contraseña actual
+                if ($contrasena_actual == $request->contrasena) {
+                    return back()->with('mensaje_guardado', 'La nueva contraseña debe ser diferente de la contraseña actual.');
+                }
                 
                 if($usuario['COD_USUARIO'] == session('user')){
                     $rol = $usuario['COD_ROL'];
