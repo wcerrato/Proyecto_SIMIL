@@ -61,7 +61,7 @@
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
 
-                <h1 class="h3 mb-0 text-gray-800">Cambio De Contraseña</h1>
+                <h1 class="h3 mb-0 text-gray-800">Ajustes de Usuario</h1>
 
             </div>
 
@@ -76,13 +76,13 @@
     @endif    
 </div>
 
-<div id="cambiar_contrasena" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div id="cambiar_contrasena_Perfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Cambiar Contraseña</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Cambiar Contraseña y Preguntas de Seguridad</h5>
             </div>
-            <form action="/usuarios/contrasena" method="post">
+            <form action="/usuarios/contrasenaPerfil" method="post">
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
@@ -100,13 +100,42 @@
                     @endif
 
                     <div class="form-group">
-                    <label for="contrasena">Contraseña:</label>
+                    <label for="contrasena_anterior">Contraseña Anterior:</label>
+                        <input type="password" name="contrasena_anterior" id="contrasena_anterior" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" aria-describedby="basic-addon2"  value="{{ old('editar_descripcion_descuento') }}" >
+                    </div>
+
+                    <div class="form-group">
+                    <label for="contrasena">Contraseña Nueva:</label>
                         <input type="password" name="contrasena" id="contrasena" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" aria-describedby="basic-addon2"  value="{{ old('editar_descripcion_descuento') }}" >
                     </div>
 
                     <div class="form-group">
                         Confirmar Contraseña
                         <input type="password" name="confirmar_contrasena" id="confirmar_contrasena" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_porcentaje_descuento') }}">
+                    </div>
+
+                    <div class="form-group">
+                        <select name="pregunta_usuario"  id="pregunta_usuario" class="form-control bg-light border-0 small" aria-describedby="basic-addon2">
+                        @foreach($preguntas_array[0] as $preguntas)
+                        <option value="{{$preguntas['COD_PREGUNTA']}}">{{$preguntas['PREGUNTA']}}</option>
+                        @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="respuesta" style="width: 70%;" class="form-control custom-input " placeholder="Ingresar respuesta" aria-describedby="basic-addon2">
+                    </div>
+
+                    <div class="form-group">
+                        <select name="pregunta_usuario2"  id="pregunta_usuario2" class="form-control bg-light border-0 small" aria-describedby="basic-addon2">
+                        @foreach($preguntas_array[0] as $preguntas)
+                        <option value="{{$preguntas['COD_PREGUNTA']}}">{{$preguntas['PREGUNTA']}}</option>
+                        @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="respuesta2" style="width: 70%;" class="form-control custom-input " placeholder="Ingresar respuesta" aria-describedby="basic-addon2">
                     </div>
 
                     <div class="form-group">

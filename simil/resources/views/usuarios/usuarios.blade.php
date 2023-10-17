@@ -142,6 +142,11 @@
                     <div class="form-group">
                         <input type="password" name="contrasena" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Contraseña" aria-describedby="basic-addon2" value="{{ old('contrasena') }}">
                     </div>
+
+                    <div class="form-group">
+                        <input type="password" name="confirmar_contrasena" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Contraseña" aria-describedby="basic-addon2" value="{{ old('contrasena') }}">
+                    </div>
+
                     <div class="form-group">
                         <select name="persona_usuario" id="persona_usuario" class="form-control bg-light border-0 small" aria-describedby="basic-addon2">
                             @foreach($personas_array[0] as $personas)
@@ -155,6 +160,18 @@
                                 <option value="{{$roles['COD_ROL']}}">{{$roles['NOM_ROL']}}</option>
                             @endforeach
                         </select>
+                    </div>
+
+                    <div class="form-group">
+                        <select name="pregunta_usuario"  id="pregunta_usuario" class="form-control bg-light border-0 small" aria-describedby="basic-addon2">
+                        @foreach($preguntas_array[0] as $preguntas)
+                        <option value="{{$preguntas['COD_PREGUNTA']}}">{{$preguntas['PREGUNTA']}}</option>
+                        @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="respuesta" style="width: 70%;" class="form-control custom-input " placeholder="Ingresar respuesta" aria-describedby="basic-addon2">
                     </div>
 
                     <div class="form-group">

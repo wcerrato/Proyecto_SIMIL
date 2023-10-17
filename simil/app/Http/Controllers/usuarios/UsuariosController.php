@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Validator;
+use Illuminate\Validation\Rule;
 
 class UsuariosController extends Controller
 {
@@ -76,12 +77,26 @@ class UsuariosController extends Controller
     }
     
     public function guardar_usuario(Request $request){
+
+        if($request->contrasena <> $request->confirmar_contrasena){
+            
+            return back()->with('mensaje_guardado','Las contraseñas deben ser la misma para poder realizar el cambio.');
+            
+        }
         
-        $validator = Validator::make($request->all(),[
-            
-            'cod_usuario' => 'required|min:5|max:50',
-            'contrasena' => 'required|min:5|max:50'
-            
+        $validator = Validator::make($request->all(), [
+            'cod_usuario' => [
+                'required',
+                'min:5',
+                'max:8',
+                'regex:/^[A-Z]+$/',
+            ],
+            'contrasena' => [
+                'required',
+                'min:5',
+                'max:8',
+                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).*$/',
+            ],
         ]);
         
         if($validator->fails()){

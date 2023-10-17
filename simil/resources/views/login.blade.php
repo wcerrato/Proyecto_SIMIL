@@ -98,9 +98,11 @@
 
                                             <input type="text" name="usuario" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Ingresar Usuario" aria-describedby="basic-addon2">
                                         </div>
+
                                         <div class="form-group">
                                             <input type="password" name="contrasena" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Ingresar Contraseña" aria-describedby="basic-addon2">
                                         </div>
+
                                     </div>
                                     <div class="modal-footer">
                                     <div class="d-flex justify-content-between align-items-start" style="width: 100%;">

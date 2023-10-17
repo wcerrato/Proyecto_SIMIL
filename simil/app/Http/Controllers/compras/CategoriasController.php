@@ -17,7 +17,7 @@ class CategoriasController extends Controller
             $categorias_array = $categorias->json();
             return view('/compras/categorias', compact('categorias_array'));
         
-         }else{
+        }else{
             
             return view('login');
             

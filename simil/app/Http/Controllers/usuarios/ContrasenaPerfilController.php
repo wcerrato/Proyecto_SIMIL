@@ -7,14 +7,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Validator;
 
-class ContrasenaController extends Controller
+class ContrasenaPerfilController extends Controller
 {
     
-     public function index() {
+    public function index() {
         
         if(session('login')=='TRUE'){
+
+            $preguntas = HTTP::get('http://127.0.0.1:9000/api/simil/preguntas');
+            $preguntas_array = $preguntas->json();
         
-            return view('/usuarios/contrasena');
+            return view('/usuarios/contrasenaPerfil', compact('preguntas_array'));
             
         }else{
             
@@ -24,7 +27,7 @@ class ContrasenaController extends Controller
         
     }
     
-    public function cambiar_contrasena(Request $request){
+    public function cambiar_contrasena_Perfil(Request $request){
         
         if($request->contrasena <> $request->confirmar_contrasena){
             
@@ -70,10 +73,15 @@ class ContrasenaController extends Controller
                         break; // Terminar el bucle una vez encontrada la contraseña
                     }
                 }
-            
+                
+                // Verificar que la contraseña sea la misma que la contraseña actual
+                if ($contrasena_anterior != $request->contrasena) {
+                    return back()->with('mensaje_guardado', 'La contraseña actual no es correcta.');
+                }
+
                 // Verificar que la nueva contraseña sea diferente de la contraseña actual
                 if ($contrasena_actual == $request->contrasena) {
-                    return back()->with('mensaje_guardado', 'La nueva contraseña debe ser diferente de la contraseña actual.');
+                    return back()->with('mensaje_guardado', 'La contraseña debe ser diferente de la contraseña actual.');
                 }
                 
                 if($usuario['COD_USUARIO'] == session('user')){

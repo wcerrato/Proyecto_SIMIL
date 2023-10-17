@@ -53,8 +53,6 @@ Route::put('/compras/proveedores', [App\Http\Controllers\compras\ProveedoresCont
 Route::get('/compras/compras', [App\Http\Controllers\compras\ComprasController::class, 'index']);
 Route::post('/compras/compras', [App\Http\Controllers\compras\ComprasController::class, 'guardar_compra']);
 Route::put('/compras/compras', [App\Http\Controllers\compras\ComprasController::class, 'editar_compra']);
-
-
 //RUTAS MODULO DE FACTURACION - DESCUENTOS
 Route::get('/facturacion/descuentos', [App\Http\Controllers\facturacion\DescuentosController::class, 'index']);
 Route::post('/facturacion/descuentos', [App\Http\Controllers\facturacion\DescuentosController::class, 'guardar_descuento']);
@@ -110,3 +108,7 @@ Route::get('/usuarios/bitacora', [App\Http\Controllers\usuarios\BitacoraControll
 //RUTAS MODULO DE USUARIOS - RECUPERACION DE CONTRASEÑA
 Route::get('/usuarios/recuperacion', [App\Http\Controllers\usuarios\RecuperacionController::class, 'index']);
 Route::post('/usuarios/recuperacion', [App\Http\Controllers\usuarios\RecuperacionController::class, 'verificar']);
+
+//RUTAS MODULO DE USUARIOS - RECUPERACION DE CONTRASEÑA POR MEDIO DEL PERFIL
+Route::get('/usuarios/contrasenaPerfil', [App\Http\Controllers\usuarios\ContrasenaPerfilController::class, 'index']);
+Route::put('/usuarios/contrasenaPerfil', [App\Http\Controllers\usuarios\ContrasenaPerfilController::class, 'cambiar_contrasena']);
