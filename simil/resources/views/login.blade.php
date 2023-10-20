@@ -77,7 +77,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesión </h5>
                                 </div>
                                 <form action="/" method="post" autocomplete="off">
                                     @csrf
@@ -95,17 +95,30 @@
                                         </div>
                                         @endif
                                         <div class="form-group">
-                                            <input type="text" name="usuario" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Usuario" aria-describedby="basic-addon2">
+
+                                            <input type="text" name="usuario" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Ingresar Usuario" aria-describedby="basic-addon2">
                                         </div>
+
                                         <div class="form-group">
-                                            <input type="password" name="contrasena" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Contraseña" aria-describedby="basic-addon2">
+                                            <input type="password" name="contrasena" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Ingresar Contraseña" aria-describedby="basic-addon2">
                                         </div>
+
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
-                                            <i class="fas fa-check-circle fa-sm text-white-50"></i> Acceder
-                                        </button>
+                                    <div class="d-flex justify-content-between align-items-start" style="width: 100%;">
+                                        <!-- Enlace "Olvidaste tu contraseña?" -->
+                                        <a  href="/usuarios/recuperacion" class="text-left">¿Olvidaste tu contraseña?</a>
                                     </div>
+    
+                                        <!-- Botón "Acceder" -->
+                                    <button type="submit" style="background-color: #1cc88a; color: white; min-width: 200px;" class="btn btn-sm shadow-sm">
+                                        <i class="fas fa-check-circle fa-sm text-white-50"></i> Acceder
+                                    </button>
+                                    </div>
+
+
+
+
                                 </form>
                             </div>
                         </div>

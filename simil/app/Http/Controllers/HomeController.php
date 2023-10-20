@@ -39,12 +39,24 @@ class HomeController extends Controller
     
     public function login(Request $request){
         
+        $messages = [
+            'usuario.regex' => 'El campo usuario debe estar en mayúsculas.'
+        ];
+        
         $validator = Validator::make($request->all(),[
-            
-            'usuario' => 'required',
-            'contrasena' => 'required'
-            
-        ]);
+            'usuario'  => [
+                'required',
+                'min:5',
+                'max:8',
+                'regex:/^[A-Z]+$/',
+            ],
+            'contrasena' =>[
+                'required',
+                'min:5',
+                'max:8',
+                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).*$/',
+            ],
+        ], $messages);
         
         if($validator->fails()){
             

@@ -62,9 +62,9 @@
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
             <th style="width:10%;">Objeto</th>
             <th style="width:10%;">Fecha</th>
-            <th style="width:10%;">Usuario</th>
+            <th style="width:15%;">Usuario</th>
             <th style="width:10%;">Accion</th>
-            <th style="width:10%;">Descripcion</th>
+            <th style="width:auto%;">Descripcion</th>
         </tr>
         
         @foreach($Bitacora_array[0] as $bitacora)

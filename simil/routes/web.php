@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,22 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::post('/', [App\Http\Controllers\HomeController::class, 'login']);
@@ -53,8 +70,6 @@ Route::put('/compras/proveedores', [App\Http\Controllers\compras\ProveedoresCont
 Route::get('/compras/compras', [App\Http\Controllers\compras\ComprasController::class, 'index']);
 Route::post('/compras/compras', [App\Http\Controllers\compras\ComprasController::class, 'guardar_compra']);
 Route::put('/compras/compras', [App\Http\Controllers\compras\ComprasController::class, 'editar_compra']);
-
-
 //RUTAS MODULO DE FACTURACION - DESCUENTOS
 Route::get('/facturacion/descuentos', [App\Http\Controllers\facturacion\DescuentosController::class, 'index']);
 Route::post('/facturacion/descuentos', [App\Http\Controllers\facturacion\DescuentosController::class, 'guardar_descuento']);
@@ -111,3 +126,11 @@ Route::put('/usuarios/objetos', [App\Http\Controllers\usuarios\ObjetosController
 
 //RUTAS MODULO DE USUARIOS - BOTACORA
 Route::get('/usuarios/bitacora', [App\Http\Controllers\usuarios\BitacoraController::class, 'index']);
+
+//RUTAS MODULO DE USUARIOS - RECUPERACION DE CONTRASEÑA
+Route::get('/usuarios/recuperacion', [App\Http\Controllers\usuarios\RecuperacionController::class, 'index']);
+Route::post('/usuarios/recuperacion', [App\Http\Controllers\usuarios\RecuperacionController::class, 'verificar']);
+
+//RUTAS MODULO DE USUARIOS - RECUPERACION DE CONTRASEÑA POR MEDIO DEL PERFIL
+Route::get('/usuarios/contrasenaPerfil', [App\Http\Controllers\usuarios\ContrasenaPerfilController::class, 'index']);
+Route::put('/usuarios/contrasenaPerfil', [App\Http\Controllers\usuarios\ContrasenaPerfilController::class, 'cambiar_contrasena']);

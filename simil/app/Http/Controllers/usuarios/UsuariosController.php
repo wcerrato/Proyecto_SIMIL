@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Validator;
+use Illuminate\Validation\Rule;
 
 class UsuariosController extends Controller
 {
@@ -22,7 +23,11 @@ class UsuariosController extends Controller
             $roles = HTTP::get('http://127.0.0.1:9000/api/simil/roles');
             $roles_array = $roles->json();
 
-            return view('/usuarios/usuarios', compact('usuarios_array','personas_array','roles_array'));
+
+            $preguntas = HTTP::get('http://127.0.0.1:9000/api/simil/preguntas');
+            $preguntas_array = $preguntas->json();
+
+            return view('/usuarios/usuarios', compact('usuarios_array','personas_array','roles_array', 'preguntas_array'));
             
         }else{
             
@@ -36,8 +41,8 @@ class UsuariosController extends Controller
 
         $validator = Validator::make($request->all(),[
             
-            'editar_cod_usuario' => 'required|min:5|max:50',
-            'editar_contrasena_usuario' => 'required|min:5|max:50'
+            'editar_cod_usuario' => 'required|min:5|max:8',
+            'editar_contrasena_usuario' => 'required|min:5|max:8'
             
         ]);
         
@@ -72,12 +77,26 @@ class UsuariosController extends Controller
     }
     
     public function guardar_usuario(Request $request){
+
+        if($request->contrasena <> $request->confirmar_contrasena){
+            
+            return back()->with('mensaje_guardado','Las contraseñas deben ser la misma para poder realizar el cambio.');
+            
+        }
         
-        $validator = Validator::make($request->all(),[
-            
-            'cod_usuario' => 'required|min:5|max:50',
-            'contrasena' => 'required|min:5|max:50'
-            
+        $validator = Validator::make($request->all(), [
+            'cod_usuario' => [
+                'required',
+                'min:5',
+                'max:8',
+                'regex:/^[A-Z]+$/',
+            ],
+            'contrasena' => [
+                'required',
+                'min:5',
+                'max:8',
+                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).*$/',
+            ],
         ]);
         
         if($validator->fails()){
@@ -100,7 +119,9 @@ class UsuariosController extends Controller
                         'PT_FEC_ULTIMA_CONECCION' => date('Y-m-d',strtotime(now())), 
                         'PI_PREGUNTAS_CONTESTADAS' => 1,
                         'PT_PRIMER_INGRESO' => date('Y-m-d',strtotime(now())),
-                        'PD_FEC_VENCIMIENTO' => date('Y-m-d',strtotime(now()))
+                        'PD_FEC_VENCIMIENTO' => date('Y-m-d',strtotime(now())),
+                        'PB_COD_PREGUNTA'=> $request->pregunta_usuario,
+                        'PV_RESPUESTA'=> $request->respuesta
             ]);
             
             return back()->with('mensaje_guardado','Usuario guardado correctamente.');

@@ -54,6 +54,8 @@
     <label style="color: white; margin: 1%;">Listado De Usuarios</label>
 </div>
 
+<div style="margin:2%;"></div>
+
 <div id="div_listado_usuarios" name="div_listado_usuarios" style="width: 90%; margin: 0 auto;">
     
     <table style="width:90%; margin: 0 auto;" border="1" >
@@ -117,7 +119,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Guardar Usuario</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Guardar Usuario</h5>
             </div>
             <form action="/usuarios/usuarios" method="post">
                 @csrf
@@ -140,6 +142,11 @@
                     <div class="form-group">
                         <input type="password" name="contrasena" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Contraseña" aria-describedby="basic-addon2" value="{{ old('contrasena') }}">
                     </div>
+
+                    <div class="form-group">
+                        <input type="password" name="confirmar_contrasena" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Contraseña" aria-describedby="basic-addon2" value="{{ old('contrasena') }}">
+                    </div>
+
                     <div class="form-group">
                         <select name="persona_usuario" id="persona_usuario" class="form-control bg-light border-0 small" aria-describedby="basic-addon2">
                             @foreach($personas_array[0] as $personas)
@@ -154,6 +161,31 @@
                             @endforeach
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <select name="pregunta_usuario"  id="pregunta_usuario" class="form-control bg-light border-0 small" aria-describedby="basic-addon2">
+                        @foreach($preguntas_array[0] as $preguntas)
+                        <option value="{{$preguntas['COD_PREGUNTA']}}">{{$preguntas['PREGUNTA']}}</option>
+                        @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="respuesta" style="width: 70%;" class="form-control custom-input " placeholder="Ingresar respuesta" aria-describedby="basic-addon2">
+                    </div>
+
+                    <div class="form-group">
+                        <select name="pregunta_usuario"  id="pregunta_usuario" class="form-control bg-light border-0 small" aria-describedby="basic-addon2">
+                        @foreach($preguntas_array[0] as $preguntas)
+                        <option value="{{$preguntas['COD_PREGUNTA']}}">{{$preguntas['PREGUNTA']}}</option>
+                        @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="respuesta" style="width: 70%;" class="form-control custom-input " placeholder="Ingresar respuesta" aria-describedby="basic-addon2">
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="submit" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
@@ -173,7 +205,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Editar Usuario</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Editar Usuario</h5>
             </div>
             <form action="/usuarios/usuarios" method="post">
                 @csrf
