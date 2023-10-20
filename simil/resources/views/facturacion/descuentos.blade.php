@@ -35,7 +35,7 @@
 
 <div style="margin:1%;" class="d-sm-flex align-items-center justify-content-between mb-4" id="div_encabezado_descuentos" name="div_encabezado_descuentos">
     <h1 class="h3 mb-0 text-gray-800">
-        Modulo De Descuentos
+        Módulo de Descuentos
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#guardar_descuentos">
         <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Descuento
@@ -51,7 +51,7 @@
 </div>
 
 <div style=" background-color: #f3b103; width: 90%; margin: 0 auto;">
-    <label style="color: white; margin: 1%;">Listado De Descuentos</label>
+    <label style="color: white; margin: 1%;">Listado de Descuentos</label>
 </div>
 
 <div style="margin:2%;"></div>
@@ -60,7 +60,7 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
-            <th style="width:70%;">Descripcion</th>
+            <th style="width:60%;">Descripción</th>
             <th style="width:10%;">Porcentaje</th>
             <th style="width:10%;">Activo</th>
             <th style="width:10%;">Editar</th>
@@ -126,7 +126,7 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="descripcion_descuento" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripcion" aria-describedby="basic-addon2" value="{{ old('descripcion_descuento') }}">
+                        <input type="text" name="descripcion_descuento" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripción" aria-describedby="basic-addon2" value="{{ old('descripcion_descuento') }}">
                     </div>
                     <div class="form-group">
                         <input type="text" name="porcentaje_descuento" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Porcentaje" aria-describedby="basic-addon2" value="{{ old('porcentaje_descuento') }}">
@@ -169,7 +169,7 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        Descripcion
+                        Descripción
                         <input type="text" name="editar_descripcion_descuento" id="editar_descripcion_descuento" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_descuento') }}">
                     </div>
                     <div class="form-group">

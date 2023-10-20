@@ -35,10 +35,10 @@
 
 <div style="margin:1%;" class="d-sm-flex align-items-center justify-content-between mb-4" id="div_encabezado_numeraciones_sar" name="div_encabezado_numeraciones_sar">
     <h1 class="h3 mb-0 text-gray-800">
-        Modulo De Numeraciones SAR
+        Módulo de Numeraciones SAR
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#guardar_numeracion_sar">
-        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Numeracion
+        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Numeración
     </a>
 </div>
 
@@ -51,7 +51,7 @@
 </div>
 
 <div style=" background-color: #f3b103; width: 90%; margin: 0 auto;">
-    <label style="color: white; margin: 1%;">Listado De Numeraciones SAR</label>
+    <label style="color: white; margin: 1%;">Listado de Numeraciones SAR</label>
 </div>
 
 <div style="margin:2%;"></div>
@@ -60,13 +60,13 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
-            <th style="width:15%;">Numero Inicial</th>
-            <th style="width:15%;">Numero Final</th>
-            <th style="width:15%;">Numero Actual</th>
-            <th style="width:15%;">Fecha Vencimiento</th>
+            <th style="width:15%;">Número Inicial</th>
+            <th style="width:15%;">Número Final</th>
+            <th style="width:15%;">Número Actual</th>
+            <th style="width:25%;">Fecha de Vencimiento</th>
             <th style="width:20%;">CAI</th>
             <th style="width:10%;">Activo</th>
-            <th style="width:10%;">Editar</th>
+            <th style="width:20%;">Editar</th>
         </tr>
         
         @foreach($numeracion_sar_array[0] as $numeracion_sar)
@@ -120,7 +120,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Guardar Numeracion</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Guardar Numeración</h5>
             </div>
             <form action="/facturacion/numeraciones_sar" method="post">
                 @csrf
@@ -138,16 +138,16 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="rango_inicial_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Numero Inicial" aria-describedby="basic-addon2" value="{{ old('rango_inicial_numeracion_sar') }}">
+                        <input type="text" name="rango_inicial_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Número Inicial" aria-describedby="basic-addon2" value="{{ old('rango_inicial_numeracion_sar') }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="rango_final_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Numero Final" aria-describedby="basic-addon2" value="{{ old('rango_final_numeracion_sar') }}">
+                        <input type="text" name="rango_final_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Número Final" aria-describedby="basic-addon2" value="{{ old('rango_final_numeracion_sar') }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="rango_actual_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Numero Actual" aria-describedby="basic-addon2" value="{{ old('rango_actual_numeracion_sar') }}">
+                        <input type="text" name="rango_actual_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Número Actual" aria-describedby="basic-addon2" value="{{ old('rango_actual_numeracion_sar') }}">
                     </div>
                     <div class="form-group">
-                        <input type="date" name="fecha_vencimiento_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Fecha Vencimiento" aria-describedby="basic-addon2" value="{{ old('fecha_vencimiento_numeracion_sar') }}">
+                        <input type="date" name="fecha_vencimiento_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Fecha de Vencimiento" aria-describedby="basic-addon2" value="{{ old('fecha_vencimiento_numeracion_sar') }}">
                     </div>
                     <div class="form-group">
                         <input type="text" name="num_cai_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="CAI" aria-describedby="basic-addon2" value="{{ old('num_cai_numeracion_sar') }}">
@@ -171,7 +171,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Editar Numeracion</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Editar Numeración</h5>
             </div>
             <form action="/facturacion/numeraciones_sar" method="post">
                 @csrf
@@ -190,19 +190,19 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        Numero Inicial
+                        Número Inicial
                         <input type="text" name="editar_rango_inicial_numeracion_sar" id="editar_rango_inicial_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_rango_inicial_numeracion_sar') }}">
                     </div>
                     <div class="form-group">
-                        Numero Final
+                        Número Final
                         <input type="text" name="editar_rango_final_numeracion_sar" id="editar_rango_final_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_rango_final_numeracion_sar') }}">
                     </div>
                     <div class="form-group">
-                        Numero Final
+                        Número Final
                         <input type="text" name="editar_rango_actual_numeracion_sar" id="editar_rango_actual_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_rango_actual_numeracion_sar') }}">
                     </div>
                     <div class="form-group">
-                        Fecha Limite
+                        Fecha de Vencimiento
                         <input type="date" name="editar_fecha_vencimiento_numeracion_sar" id="editar_fecha_vencimiento_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_fecha_vencimiento_numeracion_sar') }}">
                     </div>
                     <div class="form-group">

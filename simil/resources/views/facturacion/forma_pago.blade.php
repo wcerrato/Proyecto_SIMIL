@@ -35,10 +35,10 @@
 
 <div style="margin:1%;" class="d-sm-flex align-items-center justify-content-between mb-4" id="div_encabezado_formas_pago" name="div_encabezado_formas_pago">
     <h1 class="h3 mb-0 text-gray-800">
-        Modulo De Formas De Pago
+        Módulo de Formas de Pago
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#guardar_forma_pago">
-        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Forma Pago
+        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Forma de Pago
     </a>
 </div>
 
@@ -51,7 +51,7 @@
 </div>
 
 <div style=" background-color: #f3b103; width: 90%; margin: 0 auto;">
-    <label style="color: white; margin: 1%;">Listado De Formas De Pago</label>
+    <label style="color: white; margin: 1%;">Listado de Formas de Pago</label>
 </div>
 
 <div style="margin:2%;"></div>
@@ -60,7 +60,7 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
-            <th style="width:80%">Descripcion</th>
+            <th style="width:60%">Descripción</th>
             <th style="width:10%">Activo</th>
             <th style="width:10%">Acciones</th>
         </tr>
@@ -104,7 +104,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Guardar Forma Pago</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Guardar Forma de Pago</h5>
             </div>
             <form action="/facturacion/forma_pago" method="post">
                 @csrf
@@ -122,7 +122,7 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="descripcion_forma_pago" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripcion" aria-describedby="basic-addon2" value="{{ old('descripcion_forma_pago') }}">
+                        <input type="text" name="descripcion_forma_pago" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripción" aria-describedby="basic-addon2" value="{{ old('descripcion_forma_pago') }}">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -162,7 +162,7 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        Descripcion
+                        Descripción
                         <input type="text" name="editar_descripcion_forma_pago" id="editar_descripcion_forma_pago" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_forma_pago') }}">
                     </div>
                     <div class="form-group">

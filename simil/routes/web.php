@@ -104,5 +104,10 @@ Route::get('/usuarios/roles', [App\Http\Controllers\usuarios\RolesController::cl
 Route::post('/usuarios/roles', [App\Http\Controllers\usuarios\RolesController::class, 'guardar_roles']);
 Route::put('/usuarios/roles', [App\Http\Controllers\usuarios\RolesController::class, 'editar_roles']);
 
+//RUTAS MODULO DE USUARIOS - OBJETOS
+Route::get('/usuarios/objetos', [App\Http\Controllers\usuarios\ObjetosController::class, 'index']);
+Route::post('/usuarios/objetos', [App\Http\Controllers\usuarios\ObjetosController::class, 'guardar_objetos']);
+Route::put('/usuarios/objetos', [App\Http\Controllers\usuarios\ObjetosController::class, 'editar_objetos']);
+
 //RUTAS MODULO DE USUARIOS - BOTACORA
 Route::get('/usuarios/bitacora', [App\Http\Controllers\usuarios\BitacoraController::class, 'index']);
