@@ -75,7 +75,7 @@ class ContrasenaPerfilController extends Controller
                 }
                 
                 // Verificar que la contraseña sea la misma que la contraseña actual
-                if ($contrasena_anterior != $request->contrasena) {
+                if ($contrasena_actual != $request->contrasena_anterior) {
                     return back()->with('mensaje_guardado', 'La contraseña actual no es correcta.');
                 }
 
