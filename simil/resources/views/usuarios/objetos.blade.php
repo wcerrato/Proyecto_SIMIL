@@ -35,7 +35,7 @@
 
 <div style="margin:1%;" class="d-sm-flex align-items-center justify-content-between mb-4" id="div_encabezado_objetos" name="div_encabezado_objetos">
     <h1 class="h3 mb-0 text-gray-800">
-        Módulo De Objetos
+        Módulo de Objetos
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#guardar_objetos">
         <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Objetos
@@ -51,7 +51,7 @@
 </div>
 
 <div style=" background-color: #f3b103; width: 90%; margin: 0 auto;">
-    <label style="color: white; margin: 1%;">Listado De Objetos</label>
+    <label style="color: white; margin: 1%;">Listado de Objetos</label>
 </div>
 
 <div style="margin:2%;"></div>
@@ -60,11 +60,11 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
-            <th style="width:20%;">Objeto</th>
-            <th style="width:auto%;">Descripcion</th>
-            <th style="width:10%;">Tipo</th>
-            <th style="width:10%;">Estado</th>
-            <th style="width:10%;">Editar</th>
+            <th style="width:20%;">OBJETO</th>
+            <th style="width:auto%;">DESCRIPCIÓN</th>
+            <th style="width:10%;">TIPO DE OBJETO</th>
+            <th style="width:10%;">ESTADO</th>
+            <th style="width:10%;">ACCIONES</th>
         </tr>
         
         @foreach($Objetos_array[0] as $objetos)
@@ -131,13 +131,13 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="nombre_objeto" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Nombre" aria-describedby="basic-addon2" value="{{ old('nombre_objeto') }}">
+                        <input type="text" name="nombre_objeto" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Nombre" aria-describedby="basic-addon2" value="{{ old('nombre_objeto') }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="descripcion_objeto" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripcion" aria-describedby="basic-addon2" value="{{ old('descripcion_objeto') }}">
+                        <input type="text" name="descripcion_objeto" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripcion" aria-describedby="basic-addon2" value="{{ old('descripcion_objeto') }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="tipo_objeto" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Tipo" aria-describedby="basic-addon2" value="{{ old('tipo_objeto') }}">
+                        <input type="text" name="tipo_objeto" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Tipo" aria-describedby="basic-addon2" value="{{ old('tipo_objeto') }}">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -178,15 +178,15 @@
                     @endif
                     <div class="form-group">
                         Nombre
-                        <input type="text" name="editar_nombre_objeto" id="editar_nombre_objeto" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_nombre_objeto') }}">
+                        <input type="text" name="editar_nombre_objeto" id="editar_nombre_objeto" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_nombre_objeto') }}">
                     </div>
                     <div class="form-group">
                         Descripción
-                        <input type="text" name="editar_descripcion_objeto" id="editar_descripcion_objeto" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_objeto') }}">
+                        <input type="text" name="editar_descripcion_objeto" id="editar_descripcion_objeto" onkeyup="mayus(this);"  style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_objeto') }}">
                     </div>
                     <div class="form-group">
                         Tipo
-                        <input type="text" name="editar_tipo_objeto" id="editar_tipo_objeto" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_tipo_objeto') }}">
+                        <input type="text" name="editar_tipo_objeto" id="editar_tipo_objeto" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_tipo_objeto') }}">
                     </div>
 
                     <div class="form-group">
@@ -262,6 +262,13 @@
             });
             
         });
+
+        function mayus(e) {
+        e.value = e.value.toUpperCase();
+    }
+
+
+
         
     </script>
 @endsection 

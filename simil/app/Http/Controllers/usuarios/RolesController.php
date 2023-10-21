@@ -30,8 +30,13 @@ class RolesController extends Controller
 
         $validator = Validator::make($request->all(),[
             
-            'editar_nombre_rol' => 'required|min:5|max:50',
-            'editar_descripcion_rol' => 'required|min:5|max:50',
+            'editar_nombre_rol' => [
+                'required',
+                'min:5',
+                'max:30',
+                'regex:/^[A-Z]+$/',
+            ],
+            'editar_descripcion_rol' => 'required|min:5|max:100',
 
             
         ]);
@@ -65,8 +70,13 @@ class RolesController extends Controller
         
         $validator = Validator::make($request->all(),[
             
-            'nombre_rol' => 'required|min:5|max:50',
-            'descripcion_rol' => 'required|min:5|max:50',
+            'nombre_rol' => [
+                'required',
+                'min:5',
+                'max:30',
+                'regex:/^[A-Z]+$/',
+            ],
+            'descripcion_rol' => 'required|min:5|max:100',
 
             
         ]);

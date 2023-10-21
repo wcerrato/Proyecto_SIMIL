@@ -60,13 +60,13 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
-            <th style="width:15%;">Número Inicial</th>
-            <th style="width:15%;">Número Final</th>
-            <th style="width:15%;">Número Actual</th>
-            <th style="width:25%;">Fecha de Vencimiento</th>
-            <th style="width:20%;">CAI</th>
-            <th style="width:10%;">Activo</th>
-            <th style="width:20%;">Editar</th>
+            <th style="width:20%;">NÚMERO INICIAL</th>
+            <th style="width:20%;">NÚMERO FINAL</th>
+            <th style="width:20%;">NÚMERO ACTUAL</th>
+            <th style="width:%;">FECHA DE VENCIMIENTO</th>
+            <th style="width:25%;">NÚMERO CAI</th>
+            <th style="width:10%;">ACTIVO</th>
+            <th style="width:20%;">ACCIONES</th>
         </tr>
         
         @foreach($numeracion_sar_array[0] as $numeracion_sar)
@@ -288,6 +288,12 @@
             });
             
         });
+
+        
+        function mayus(e) {
+        e.value = e.value.toUpperCase();
+        }
+
         
     </script>
 @endsection

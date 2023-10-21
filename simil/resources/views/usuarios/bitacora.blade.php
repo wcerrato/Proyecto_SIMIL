@@ -35,7 +35,7 @@
 
 <div style="margin:1%;" class="d-sm-flex align-items-center justify-content-between mb-4" id="div_encabezado_bitacora" name="div_encabezado_bitacora">
     <h1 class="h3 mb-0 text-gray-800">
-        Bitacora
+        Bitácora
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#imprimir">
         <i class="fas fa-plus-circle fa-sm text-white-50"></i> Imprimir
@@ -60,11 +60,11 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
-            <th style="width:10%;">Objeto</th>
-            <th style="width:10%;">Fecha</th>
-            <th style="width:15%;">Usuario</th>
-            <th style="width:10%;">Accion</th>
-            <th style="width:auto%;">Descripcion</th>
+            <th style="width:15%;">OBJETO</th>
+            <th style="width:20%;">FECHA</th>
+            <th style="width:20%;">USUARIO</th>
+            <th style="width:10%;">ACCIÓN</th>
+            <th style="width:auto%;">DESCRIPCIÓN</th>
         </tr>
         
         @foreach($Bitacora_array[0] as $bitacora)

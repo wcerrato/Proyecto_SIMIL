@@ -35,10 +35,10 @@
 
 <div style="margin:1%;" class="d-sm-flex align-items-center justify-content-between mb-4" id="div_encabezado_categorias" name="div_encabezado_categorias">
     <h1 class="h3 mb-0 text-gray-800">
-        Modulo De Categorias
+        Módulo de Categorías
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#guardar_categoria">
-        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Categoria
+        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Categoría
     </a>
 </div>
 
@@ -51,7 +51,7 @@
 </div>
 
 <div style=" background-color: #f3b103; width: 90%; margin: 0 auto;">
-    <label style="color: white; margin: 1%;">Listado De Categorias</label>
+    <label style="color: white; margin: 1%;">Listado de Categorías</label>
 </div>
 
 <div style="margin:2%;"></div>
@@ -60,9 +60,9 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
-            <th style="width:80%">Descripcion</th>
-            <th style="width:10%">Activo</th>
-            <th style="width:10%">Acciones</th>
+            <th style="width:60%">NOMBRE DE CATEGORÍA </th>
+            <th style="width:10%">ACTIVO</th>
+            <th style="width:10%">ACCIONES</th>
         </tr>
         
         @foreach($categorias_array[0] as $categoria)
@@ -105,7 +105,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Guardar Categoria</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Guardar Categoría</h5>
             </div>
             <form action="/compras/categorias" method="post">
                 @csrf
@@ -123,7 +123,7 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="descripcion_categoria" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripcion" aria-describedby="basic-addon2" value="{{ old('descripcion_categoria') }}">
+                        <input type="text" name="descripcion_categoria" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Nombre Categoría" aria-describedby="basic-addon2" value="{{ old('descripcion_categoria') }}">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -144,7 +144,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Editar Categoria</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Editar Categoría</h5>
             </div>
             <form action="/compras/categorias" method="post">
                 @csrf
@@ -163,8 +163,8 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        Descripcion
-                        <input type="text" name="editar_descripcion_categoria" id="editar_descripcion_categoria" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_categoria') }}">
+                        Nombre Categoría
+                        <input type="text" name="editar_descripcion_categoria" id="editar_descripcion_categoria" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_categoria') }}">
                     </div>
                     <div class="form-group">
                         Estado
@@ -233,6 +233,13 @@
             });
             
         });
+
+        
+        function mayus(e) {
+        e.value = e.value.toUpperCase();
+    }
+
+
         
     </script>
 @endsection

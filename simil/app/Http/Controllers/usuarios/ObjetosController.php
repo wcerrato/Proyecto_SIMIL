@@ -29,7 +29,12 @@ class ObjetosController extends Controller
 
         $validator = Validator::make($request->all(),[
             
-            'editar_nombre_objeto' => 'required|alpha|min:5|max:100',
+            'editar_nombre_objeto' => [
+                'required',
+                'min:5',
+                'max:100',
+                'regex:/^[A-Z]+$/',
+            ],
             'editar_descripcion_objeto' => 'required|min:5|max:100',
             'editar_tipo_objeto' => 'required|min:5|max:15',
 
@@ -67,7 +72,12 @@ class ObjetosController extends Controller
        
 
         $validator = Validator::make($request->all(), [
-            'nombre_objeto' => 'required|alpha|min:5|max:100',
+            'nombre_objeto' => [
+                'required',
+                'min:5',
+                'max:100',
+                'regex:/^[A-Z]+$/',
+            ],
             //'nombre_objeto' => 'required|alpha|min:5|max:100|unique:TBL_MS_OBJETOS,OBJETO',
             'descripcion_objeto' => 'required|min:5|max:100',
             'tipo_objeto' => 'required|min:5|max:15',
