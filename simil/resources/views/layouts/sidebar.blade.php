@@ -78,7 +78,6 @@
                         <a class="collapse-item" href="/facturacion/forma_pago">Forma de Pago</a>
                         <a class="collapse-item" href="/facturacion/numeraciones_sar">Numeraciones SAR</a>
                         <a class="collapse-item" href="/facturacion/tipo_factura">Tipo de Factura</a>
-                   
                     </div>
                 </div>
             </li>
@@ -129,13 +128,8 @@
                         <a class="collapse-item" href="/usuarios/usuarios">Usuarios</a>
                         <a class="collapse-item" href="/usuarios/permisos">Permisos</a>
                         <a class="collapse-item" href="/usuarios/roles">Roles</a>
-<<<<<<< HEAD
                         <a class="collapse-item" href="/usuarios/objetos">Objetos</a>
                         <a class="collapse-item" href="/usuarios/bitacora">Bitácora</a>
-=======
-                        <a class="collapse-item" href="/usuarios/bitacora">Bitacora</a>
-                        <a class="collapse-item" href="/usuarios/recuperacion">Recuperación</a>
->>>>>>> a3ee0fbeda719e9ac249a8fe092e7092c9f396e4
                     </div>
                 </div>
             </li>
