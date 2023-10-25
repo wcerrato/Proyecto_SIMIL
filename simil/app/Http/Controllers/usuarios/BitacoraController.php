@@ -5,38 +5,41 @@ namespace App\Http\Controllers\usuarios;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use Validator;
+use Illuminate\Support\Facades\DB;
 
 class BitacoraController extends Controller
 {
     public function index(Request $request) {
+    if (session('login') == 'TRUE') {
+        $busqueda = $request->input('busqueda');
+        $query = DB::table('TBL_MS_BITACORA');
 
-      /* $buscarpor=$request->get('buscarpor');*/
-        
-    
-        if(session('login') == 'TRUE'){ 
+        // No apliques la condición de búsqueda si el campo de búsqueda está vacío
+        if (!empty($busqueda)) {
+            $query->where('ACCION', 'like', '%' . $busqueda . '%');
+        }
+
+        // Obtiene todos los registros sin paginación
+        $categorias = $query->get();
+
+        $porPagina = 10; // Cantidad de registros por página
+        $categorias = $query->paginate($porPagina);
 
 
-            /*$roles = HTTP::get('http://127.0.0.1:9000/api/simil/bitacora');*/
-            $roles = HTTP::get('http://127.0.0.1:9000/api/simil/bitacora');
-            
-            $busqueda= $request->busqueda;
-            $categorias= BitacoraController::middleware('NOM_OBJETO','like','%'.$busqueda.'%')
-                        ->orwhere('COD_BITACORA','like','%'.$busqueda.'%')
-                        ->paginate(2); 
+        // Obtén los roles desde la API
+        $bitacora = Http::get('http://127.0.0.1:9000/api/simil/bitacora')->json();
 
-
-
-            /*compact('Bitacora_array','categorias','busqueda') */
-           /*where('NOM_OBJETO','like',"%$buscarpor%")*/
-            return view('/usuarios/bitacora',['Bitacora_array'=>$Bitacora_array,'busqueda'=>$busqueda,'categorias'=>$categorias]); /*['Bitacora_array'=>$Bitacora_array,'buscarpor'=>$buscarpor]);
-           /* return view('/usuarios/bitacora', compact('Bitacora_array','buscarpor')); >where('Objeto','like','%'.$buscarpor.'%') */
-        
-        } else {
-            
-            return view('login');
-            
-        }    
-        
+        return view('usuarios.bitacora', [
+            'Bitacora_array' => $bitacora,
+            'busqueda' => $busqueda,
+            'categorias' => $categorias,
+        ]);
+    } else {
+        return view('login');
     }
+}
+
+    
+    
+    
 }

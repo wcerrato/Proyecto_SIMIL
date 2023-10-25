@@ -3,7 +3,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                 <div class="sidebar-brand-icon">
-                   <img src="{{ asset('/dash/img/logo_simil.png') }}" alt="SIMIL Logo" style="width: 200px;">
+                <img src="{{ asset('/dash/img/logo_simil.png') }}" alt="SIMIL Logo" style="width: 200px;">
                 </div>
             </a>
 
@@ -14,7 +14,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Panel Inicial</span></a>
+                    <span style="color: black ">Panel Inicial</span></a>
             </li>
 
             <!-- Divider -->
@@ -30,12 +30,11 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Administración</span>
+                    <span style="color: black ">Administración</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Módulos de Administración:</h6>
-                        <a class="collapse-item" href="/administracion/parametros_generales">Parámetros Generales</a>
                         <a class="collapse-item" href="/administracion/reportes">Reportes</a>
                         <a class="collapse-item" href="/administracion/sucursal">Sucursal</a>
                     </div>
@@ -47,7 +46,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInventarios"
                     aria-expanded="true" aria-controls="collapseInventarios">
                     <i class="fas fa-fw fa-archive"></i>
-                    <span>Inventario</span>
+                    <span style="color: black ">Inventario</span>
                 </a>
                 <div id="collapseInventarios" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
@@ -65,7 +64,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFacturacion"
                     aria-expanded="true" aria-controls="collapseFacturacion">
                     <i class="fas fa-fw fa-shopping-cart"></i>
-                    <span>Facturación</span>
+                    <span style="color: black ">Facturación</span>
                 </a>
                 <div id="collapseFacturacion" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
@@ -86,7 +85,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCompras"
                     aria-expanded="true" aria-controls="collapseCompras">
                     <i class="fas fa-fw fa-boxes"></i>
-                    <span>Compras</span>
+                    <span style="color: black ">Compras</span>
                 </a>
                 <div id="collapseCompras" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
@@ -103,7 +102,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseClientes"
                     aria-expanded="true" aria-controls="collapseClientes">
                     <i class="fas fa-fw fa-address-book"></i>
-                    <span>Clientes</span>
+                    <span style="color: black ">Clientes</span>
                 </a>
                 <div id="collapseClientes" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
@@ -120,7 +119,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsuarios"
                     aria-expanded="true" aria-controls="collapseUsuarios">
                     <i class="fas fa-fw fa-user"></i>
-                    <span>Usuarios</span>
+                    <span style="color: black ">Usuarios</span>
                 </a>
                 <div id="collapseUsuarios" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -130,6 +129,7 @@
                         <a class="collapse-item" href="/usuarios/roles">Roles</a>
                         <a class="collapse-item" href="/usuarios/objetos">Objetos</a>
                         <a class="collapse-item" href="/usuarios/bitacora">Bitácora</a>
+                        <a class="collapse-item" href="/usuarios/parametros_generales">Parámetros Generales</a>
                     </div>
                 </div>
             </li>
