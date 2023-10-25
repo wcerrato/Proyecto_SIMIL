@@ -141,7 +141,7 @@
                     <div class="form-group">
                     <div class="alert alert-info" style="font-size: 12px; width: 350px; " >
                     <small>
-                    Las contraseñas deben contener mayúsculas, minúsculas, números, caracteres especiales, minimo 5 y maximo 8 caracteres para poder realizar el cambio. 
+                    Las contraseñas deben contener mayúsculas, minúsculas, números, caracteres especiales, mínimo 5 y máximo 8 caracteres para poder realizar el cambio. 
                     Ejemplo: Abc123@
                     </small>
                     </div>

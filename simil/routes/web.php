@@ -124,7 +124,7 @@ Route::get('/usuarios/objetos', [App\Http\Controllers\usuarios\ObjetosController
 Route::post('/usuarios/objetos', [App\Http\Controllers\usuarios\ObjetosController::class, 'guardar_objetos']);
 Route::put('/usuarios/objetos', [App\Http\Controllers\usuarios\ObjetosController::class, 'editar_objetos']);
 
-//RUTAS MODULO DE USUARIOS - BOTACORA
+//RUTAS MODULO DE USUARIOS - BITACORA
 Route::get('/usuarios/bitacora', [App\Http\Controllers\usuarios\BitacoraController::class, 'index']);
 
 //RUTAS MODULO DE USUARIOS - RECUPERACION DE CONTRASEÑA

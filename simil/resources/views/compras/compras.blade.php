@@ -35,7 +35,7 @@
 
 <div style="margin:1%;" class="d-sm-flex align-items-center justify-content-between mb-4" id="div_encabezado_compra" name="div_encabezado_compra">
     <h1 class="h3 mb-0 text-gray-800">
-        Modulo De Compras
+        Módulo de Compras
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#guardar_compra">
         <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar una nueva compra

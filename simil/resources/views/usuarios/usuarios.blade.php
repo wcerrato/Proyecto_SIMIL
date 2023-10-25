@@ -35,7 +35,7 @@
 
 <div style="margin:1%;" class="d-sm-flex align-items-center justify-content-between mb-4" id="div_encabezado_usuarios" name="div_encabezado_usuarios">
     <h1 class="h3 mb-0 text-gray-800">
-        Modulo De Usuarios
+        Módulo de Usuarios
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#guardar_usuario">
         <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Usuario
@@ -51,7 +51,7 @@
 </div>
 
 <div style=" background-color: #f3b103; width: 90%; margin: 0 auto;">
-    <label style="color: white; margin: 1%;">Listado De Usuarios</label>
+    <label style="color: white; margin: 1%;">Listado de Usuarios</label>
 </div>
 
 <div style="margin:2%;"></div>
@@ -60,12 +60,12 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
-            <th>Usuario</th>
-            <th>Nombre</th>
-            <th>Rol</th>
-            <th>Fecha Ultima Conexion</th>
-            <th>Activo</th>
-            <th>Editar</th>
+            <th style="width:15%;">USUARIO</th>
+            <th style="width:50%;">NOMBRE</th>
+            <th style="width:50%;">ROL</th>
+            <th style="width:30%;">FECHA DE ÚLTIMA CONEXIÓN</th>
+            <th style="width:20%;">ACTIVO</th>
+            <th style="width:15%;">ACCIONES</th>
         </tr>
         
         @foreach($usuarios_array[0] as $usuario)
@@ -137,10 +137,10 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="cod_usuario" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Usuario" aria-describedby="basic-addon2" value="{{ old('cod_usuario') }}">
+                        <input type="text" name="cod_usuario" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Usuario" aria-describedby="basic-addon2" value="{{ old('cod_usuario') }}">
                     </div>
                     <div class="form-group">
-                        <input type="password" name="contrasena" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Contraseña" aria-describedby="basic-addon2" value="{{ old('contrasena') }}">
+                        <input type="password" name="contrasena"  style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Contraseña" aria-describedby="basic-addon2" value="{{ old('contrasena') }}">
                     </div>
 
                     <div class="form-group">
@@ -171,7 +171,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name="respuesta" style="width: 70%;" class="form-control custom-input " placeholder="Ingresar respuesta" aria-describedby="basic-addon2">
+                        <input type="text" name="respuesta" onkeyup="mayus(this);"  style="width: 70%;" class="form-control custom-input " placeholder="Ingresar respuesta" aria-describedby="basic-addon2">
                     </div>
 
                     <div class="form-group">
@@ -183,7 +183,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name="respuesta" style="width: 70%;" class="form-control custom-input " placeholder="Ingresar respuesta" aria-describedby="basic-addon2">
+                        <input type="text" name="respuesta" onkeyup="mayus(this);" style="width: 70%;" class="form-control custom-input " placeholder="Ingresar respuesta" aria-describedby="basic-addon2">
                     </div>
 
                 </div>
@@ -320,6 +320,12 @@
             });
             
         });
+
+        
+        function mayus(e) {
+        e.value = e.value.toUpperCase();
+        }
+
         
     </script>
 @endsection

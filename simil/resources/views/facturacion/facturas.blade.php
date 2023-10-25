@@ -4,7 +4,7 @@
 
 <div style="margin:1%;" class="d-sm-flex align-items-center justify-content-between mb-4" id="div_encabezado_descuentos" name="div_encabezado_descuentos">
     <h1 class="h3 mb-0 text-gray-800">
-        Modulo De Facturas
+        Módulo de Facturas
     </h1>
 </div>
 
@@ -17,7 +17,7 @@
 </div>
 
 <div style=" background-color: #f3b103; width: 90%; margin: 0 auto;">
-    <label style="color: white; margin: 1%; ">Generacion De Factura</label>
+    <label style="color: white; margin: 1%; ">Generación de Factura</label>
 </div>
 
 <div style="margin:2%;"></div>
@@ -65,7 +65,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Forma Pago:</td>
+                        <td>Forma de Pago:</td>
                         <td>
                             <div class="form-group">
                                 <select style="width:80%;" name="forma_pago" id="forma_pago" class="form-control bg-light border-0 small" aria-describedby="basic-addon2">
