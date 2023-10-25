@@ -33,9 +33,10 @@
     
 </style>
 
+
 <div style="margin:1%;" class="d-sm-flex align-items-center justify-content-between mb-4" id="div_encabezado_bitacora" name="div_encabezado_bitacora">
     <h1 class="h3 mb-0 text-gray-800">
-        Bitacora
+        Bitácora
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#imprimir">
         <i class="fas fa-plus-circle fa-sm text-white-50"></i> Imprimir
@@ -57,9 +58,31 @@
 <div style="margin:2%;"></div>
 
 <div id="div_listado_bitacora" name="div_ldiv_listado_bitacoraistado_roles" style="width: 90%; margin: 0 auto;">
+
+ 
+
+
+
+    <div class="d-md-flex justify-content-md-end">
+
+      <form action="/usuarios/bitacora"  method="GET">
+         <div class="btn-group">
+           <input type="text" name="busqueda" class="form-control">
+           <input type="submit" value="enviar" class="btn btn-primary">
+         </div>
+      </form>
+
+    </div>
+
     
+
+
+
+
+
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
+            <th style="width:10%;">Cod</th>
             <th style="width:10%;">Objeto</th>
             <th style="width:10%;">Fecha</th>
             <th style="width:15%;">Usuario</th>
@@ -70,6 +93,11 @@
         @foreach($Bitacora_array[0] as $bitacora)
         
             <tr>
+                <td>
+                    <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="cod{{$bitacora['COD_BITACORA']}}" name="cod_bitacora{{$bitacora['COD_BITACORA']}}" value="{{$bitacora['COD_BITACORA']}}">
+                </td>
+
+
                 <td>
                     <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="objeto{{$bitacora['COD_BITACORA']}}" name="bitacora{{$bitacora['COD_BITACORA']}}" value="{{$bitacora['NOM_OBJETO']}}">
                 </td>
@@ -89,8 +117,27 @@
             </tr>
         
         @endforeach
+
+
+      <tfoot>
+
+      <tr>
+
+       <td colspan="4">{{"$categorias->links()"}}</td>
+
+      </tr>
+
+      </tfoot>
+
+
+
+
+
+
+
     </table>
-    
+
+
 </div>
 
 
