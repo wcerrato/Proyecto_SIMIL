@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\administracion;
+namespace App\Http\Controllers\usuarios;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class ParametrosGeneralesController extends Controller
         
             $parametros = HTTP::get('http://127.0.0.1:9000/api/simil/parametros');
             $parametros_array = $parametros->json();
-            return view('/administracion/parametros_generales', compact('parametros_array'));
+            return view('/usuarios/parametros_generales', compact('parametros_array'));
             
         }else{
             
