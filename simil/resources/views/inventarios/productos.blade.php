@@ -35,11 +35,10 @@
 
 <div style="margin:1%;" class="d-sm-flex align-items-center justify-content-between mb-4" id="div_encabezado_productos" name="div_encabezado_productos">
     <h1 class="h3 mb-0 text-gray-800">
-        Modulo De Productos
+        Módulo de Productos
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#guardar_producto">
-        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Producto
-    </a>
+        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar 
 </div>
 
 <div class="row">
@@ -51,7 +50,7 @@
 </div>
 
 <div style=" background-color: #f3b103; width: 90%; margin: 0 auto;">
-    <label style="color: white; margin: 1%;">Listado De Productos</label>
+    <label style="color: white; margin: 1%;">Listado de Productos</label>
 </div>
 
 <div style="margin:2%;"></div>
@@ -60,13 +59,13 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
-            <th style="width:20%;">Nombre</th>
-            <th style="width:30%;">Descripcion</th>
-            <th style="width:10%;">Cantidad</th>
-            <th style="width:10%;">Precio</th>
-            <th style="width:10%;">Categoria</th>
-            <th style="width:10%;">Estado</th>
-            <th style="width:10%;">Editar</th>
+            <th style="width:20%;">NOMBRE</th>
+            <th style="width:30%;">DESCRIPCIÓN</th>
+            <th style="width:10%;">CANTIDAD</th>
+            <th style="width:10%;">PRECIO</th>
+            <th style="width:10%;">CATEGORÍA</th>
+            <th style="width:10%;">ESTADO</th>
+            <th style="width:10%;">ACCIONES</th>
         </tr>
         
         @foreach($productos_array[0] as $producto)
@@ -139,10 +138,10 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="nombre_producto" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Nombre" aria-describedby="basic-addon2" value="{{ old('nombre_producto') }}">
+                        <input type="text" name="nombre_producto" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Nombre" aria-describedby="basic-addon2" value="{{ old('nombre_producto') }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="descripcion_producto" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripcion" aria-describedby="basic-addon2" value="{{ old('descripcion_producto') }}">
+                        <input type="text" name="descripcion_producto" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripción" aria-describedby="basic-addon2" value="{{ old('descripcion_producto') }}">
                     </div>
                     <div class="form-group">
                         <input type="text" name="cantidad_producto" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Cantidad" aria-describedby="basic-addon2" value="{{ old('cantidad_producto') }}">
@@ -196,11 +195,11 @@
                     @endif
                     <div class="form-group">
                         Nombre
-                        <input type="text" name="editar_nombre_producto" id="editar_nombre_producto" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_nombre_producto') }}">
+                        <input type="text" name="editar_nombre_producto" id="editar_nombre_producto" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_nombre_producto') }}">
                     </div>
                     <div class="form-group">
-                        Descripcion
-                        <input type="text" name="editar_descripcion_producto" id="editar_descripcion_producto" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_producto') }}">
+                        Descripción
+                        <input type="text" name="editar_descripcion_producto" id="editar_descripcion_producto" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_producto') }}">
                     </div>
                     <div class="form-group">
                         Cantidad
@@ -297,6 +296,11 @@
             });
             
         });
+
+        //Función que valida las mayúsculas
+        function mayus(e) {
+        e.value = e.value.toUpperCase();
+    }
         
     </script>
 @endsection

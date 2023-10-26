@@ -4,15 +4,15 @@
 
 <div style="margin:1%;" class="d-sm-flex align-items-center justify-content-between mb-4" id="div_encabezado_inventario" name="div_encabezado_inventario">
     <h1 class="h3 mb-0 text-gray-800">
-        Modulo De Inventario
+        Módulo de Inventario
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
-        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Producto
+        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar 
     </a>
 </div>
 
 <div style=" background-color: #f3b103; width: 90%; margin: 0 auto;">
-    <label style="color: white; margin: 1%;">Listado De Productos</label>
+    <label style="color: white; margin: 1%;">Listado de Inventario</label>
 </div>
 
 <div style="margin:2%;"></div>
@@ -21,10 +21,10 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
-            <th>Nombre de producto</th>
-            <th>Cantidad existente</th>
-            <th>Precio de venta</th>
-            <th>Acciones</th>
+            <th>NOMBRE DEL PRODUCTO</th>
+            <th>CANTIDAD EXISTENTE</th>
+            <th>PRECIO DE VENTA</th>
+            <th>ACCIONES</th>
         </tr>
         <tr>
             <td>Papel</td>
