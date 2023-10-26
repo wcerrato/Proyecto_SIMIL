@@ -36,9 +36,9 @@ Route::put('/', [App\Http\Controllers\HomeController::class, 'logout']);
 
 
 //RUTAS MODULO DE SEGURIDAD - PARAMETROS GENERALES
-Route::get('/administracion/parametros_generales', [App\Http\Controllers\administracion\ParametrosGeneralesController::class, 'index']);
-Route::post('/administracion/parametros_generales', [App\Http\Controllers\administracion\ParametrosGeneralesController::class, 'guardar_parametro']);
-Route::put('/administracion/parametros_generales', [App\Http\Controllers\administracion\ParametrosGeneralesController::class, 'editar_parametro']);
+Route::get('/usuarios/parametros_generales', [App\Http\Controllers\usuarios\ParametrosGeneralesController::class, 'index']);
+Route::post('/usuarios/parametros_generales', [App\Http\Controllers\usuarios\ParametrosGeneralesController::class, 'guardar_parametro']);
+Route::put('/usuarios/parametros_generales', [App\Http\Controllers\usuarios\ParametrosGeneralesController::class, 'editar_parametro']);
 //RUTAS MODULO DE SEGURIDAD - SUCURSALES
 Route::get('/administracion/sucursal', [App\Http\Controllers\administracion\SucursalController::class, 'index']);
 Route::post('/administracion/sucursal', [App\Http\Controllers\administracion\SucursalController::class, 'guardar_sucursal']);
@@ -126,6 +126,7 @@ Route::put('/usuarios/objetos', [App\Http\Controllers\usuarios\ObjetosController
 
 //RUTAS MODULO DE USUARIOS - BITACORA
 Route::get('/usuarios/bitacora', [App\Http\Controllers\usuarios\BitacoraController::class, 'index']);
+Route::get('/bitacora', [BitacoraController::class, 'index'])->name('bitacora.index');
 
 //RUTAS MODULO DE USUARIOS - RECUPERACION DE CONTRASEÑA
 Route::get('/usuarios/recuperacion', [App\Http\Controllers\usuarios\RecuperacionController::class, 'index']);
