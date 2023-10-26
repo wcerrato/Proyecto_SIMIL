@@ -60,9 +60,9 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
-            <th style="width:60%">Descripción</th>
-            <th style="width:10%">Activo</th>
-            <th style="width:10%">Acciones</th>
+            <th style="width:60%">NOMBRE DE TIPO DE FACTURA</th>
+            <th style="width:10%">ACTIVO</th>
+            <th style="width:10%">ACCIONES</th>
         </tr>
         
         @foreach($tipo_factura_array[0] as $tipo_factura)
@@ -122,7 +122,7 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="descripcion_tipo_factura" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripción" aria-describedby="basic-addon2" value="{{ old('descripcion_tipo_factura') }}">
+                        <input type="text" name="descripcion_tipo_factura" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripción" aria-describedby="basic-addon2" value="{{ old('descripcion_tipo_factura') }}">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -163,7 +163,7 @@
                     @endif
                     <div class="form-group">
                         Descripción
-                        <input type="text" name="editar_descripcion_tipo_factura" id="editar_descripcion_tipo_factura" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_tipo_factura') }}">
+                        <input type="text" name="editar_descripcion_tipo_factura" id="editar_descripcion_tipo_factura" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_tipo_factura') }}">
                     </div>
                     <div class="form-group">
                         Estado
@@ -233,6 +233,12 @@
             });
             
         });
+
+        
+        function mayus(e) {
+        e.value = e.value.toUpperCase();
+        }
+
         
     </script>
 @endsection

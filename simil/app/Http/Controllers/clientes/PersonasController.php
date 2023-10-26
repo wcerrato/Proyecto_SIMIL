@@ -57,7 +57,7 @@ class PersonasController extends Controller
                     'PI_COD_PERSONA' => $request->editar_codigo_persona
             ]);
 
-            return back()->with('mensaje_guardado','Persona editado correctamente.');
+            return back()->with('mensaje_guardado','Persona editada correctamente.');
             
         }
         
@@ -94,7 +94,7 @@ class PersonasController extends Controller
                     'PC_TIP_PERSONA' => $request->tipo_persona
             ]);
             
-            return back()->with('mensaje_guardado','Persona guardado correctamente.');
+            return back()->with('mensaje_guardado','Persona guardada correctamente.');
             
         }
         

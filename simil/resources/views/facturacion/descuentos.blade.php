@@ -60,10 +60,10 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
-            <th style="width:60%;">Descripción</th>
-            <th style="width:10%;">Porcentaje</th>
-            <th style="width:10%;">Activo</th>
-            <th style="width:10%;">Editar</th>
+            <th style="width:60%;">DESCRIPCIÓN</th>
+            <th style="width:10%;">PORCENTAJE</th>
+            <th style="width:10%;">ACTIVO</th>
+            <th style="width:10%;">ACCIONES</th>
         </tr>
 
         @foreach($descuentos_array[0] as $descuentos)
@@ -126,7 +126,7 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="descripcion_descuento" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripción" aria-describedby="basic-addon2" value="{{ old('descripcion_descuento') }}">
+                        <input type="text" name="descripcion_descuento" onkeyup="mayus(this);"  style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripción" aria-describedby="basic-addon2" value="{{ old('descripcion_descuento') }}">
                     </div>
                     <div class="form-group">
                         <input type="text" name="porcentaje_descuento" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Porcentaje" aria-describedby="basic-addon2" value="{{ old('porcentaje_descuento') }}">
@@ -170,11 +170,11 @@
                     @endif
                     <div class="form-group">
                         Descripción
-                        <input type="text" name="editar_descripcion_descuento" id="editar_descripcion_descuento" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_descuento') }}">
+                        <input type="text" name="editar_descripcion_descuento" id="editar_descripcion_descuento" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_descuento') }}">
                     </div>
                     <div class="form-group">
                         Porcentaje
-                        <input type="text" name="editar_porcentaje_descuento" id="editar_porcentaje_descuento" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_porcentaje_descuento') }}">
+                        <input type="text" name="editar_porcentaje_descuento" id="editar_porcentaje_descuento"  style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_porcentaje_descuento') }}">
                     </div>
                     <div class="form-group">
                         Estado
@@ -246,6 +246,11 @@
             });
             
         });
+        
+        function mayus(e) {
+        e.value = e.value.toUpperCase();
+        }
+
         
     </script>
 @endsection

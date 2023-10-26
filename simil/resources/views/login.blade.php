@@ -20,7 +20,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset ('/dash/css/sb-admin-2.min.css') }}" rel="stylesheet">
     @yield('css')
-
+    
 </head>
 
 <body id="page-top">
@@ -94,13 +94,24 @@
                                             </ul>
                                         </div>
                                         @endif
-                                        <div class="form-group">
 
-                                            <input type="text" name="usuario" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Ingresar Usuario" aria-describedby="basic-addon2">
+                                       <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="text" name="usuario" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Ingresar Usuario" aria-describedby="basic-addon2" oninput="mayus(this); noespacio(this);" onkeypress="return soloLetras(event);"´
+                                                autocomplete="off"  oncut="return false" oncopy="return false" onpaste="return false">
+                                            </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="password" name="contrasena" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Ingresar Contraseña" aria-describedby="basic-addon2">
+                                            <div class="input-group">
+                                                <input type="password" name="contrasena" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Ingresar Contraseña" aria-describedby="basic-addon2"
+                                                autocomplete="off"  oncut="return false" oncopy="return false" onpaste="return false"onkeyup="sinespacio(this);">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" style="padding: 0;">
+                                                        <i class="fas fa-eye" id="togglePassword" style="cursor: pointer; font-size: 16px;"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -169,6 +180,76 @@
     <script src="{{ asset ('/dash/js/demo/chart-pie-demo.js') }}"></script>
     @yield('scripts')
 
+    <!-- Activar la vista en la contraseña -->
+    <script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('input[name="contrasena"]');
+
+    togglePassword.addEventListener('click', function () {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+    });
+    </script>
+
+    <!-- Validar solo Mayusculas en el txt -->
+    <script type="text/javascript">
+      function mayus(e) {
+        e.value = e.value.toUpperCase();
+      }
+    </script>
+    <!-- Validar solo letras en el txt -->
+    <script>
+      function soloLetras(e){
+        key = e.keyCode || e.which;
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+        especiales = ["8-37-39-46"];
+
+        tecla_especial = false
+        for(var i in especiales){
+          if(key == especiales[i]){
+            tecla_especial = true;
+            break;
+          }
+        }
+
+        if(letras.indexOf(tecla)==-1 &&!tecla_especial){
+          return false;
+        }
+      }
+    </script>
+
+        <!-- Validar sin espacios en el usuario -->
+    <script language="javascript">
+        function noespacio(campo, event) {
+        CadenaaReemplazar = " ";
+        CadenaReemplazo = "";
+        CadenaTexto = campo.value;
+        CadenaTextoNueva = CadenaTexto.split(CadenaaReemplazar).join(CadenaReemplazo);
+        campo.value = CadenaTextoNueva;
+        }
+    </script>  
+
+    <!-- Validar sin espacios en la contraseña -->
+    <script type="text/javascript">
+      function sinespacio(e) { 
+        var cadena =  e.value;
+        var limpia = "";
+        var parts = cadena.split(" ");
+        var length = parts.length;
+        for (var i = 0; i < length; i++) {
+          nuevacadena = parts[i];
+          subcadena = nuevacadena.trim();
+          if(subcadena != "") {
+            limpia += subcadena + " ";
+          }
+        }
+        limpia = limpia.trim();
+        e.value = limpia;
+      };
+    </script>
 </body>
 
 </html>

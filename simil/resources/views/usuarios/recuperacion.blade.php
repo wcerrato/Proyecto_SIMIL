@@ -61,7 +61,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
 
-                        <h1 class="h3 mb-0 text-gray-800">Recuperacion De Contraseña</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Recuperación de Contraseña</h1>
 
                     </div>
 
@@ -95,26 +95,32 @@
                                         </div>
                                         @endif
                                         <div class="form-group">
-                                            <input type="text" name="usuario" style="width: 70%;" class="form-control custom-input shadow-sm" placeholder="Ingresar Usuario" aria-describedby="basic-addon2">
+                                            <input type="text" name="usuario" style="width: 70%;" class="form-control custom-input shadow-sm" placeholder="Ingresar Usuario" aria-describedby="basic-addon2"
+                                            oninput="mayus(this); noespacio(this);" onkeypress="return soloLetras(event);" autocomplete="off"  oncut="return false" oncopy="return false" onpaste="return false">
                                         </div>
                                     <div class="form-group">
-                                    <select name="pregunta_usuario" style="width: 70%;" id="pregunta_usuario" class="form-control custom-input shadow-sm" aria-describedby="basic-addon2">
-                                    @foreach($preguntas_array[0] as $pregunta)
-                                    <option value="{{ $pregunta['COD_PREGUNTA'] }}">{{ $pregunta['PREGUNTA'] }}</option>
-                                    @endforeach
-                                    </select>
+                                     <select name="pregunta_usuario" style="width: 70%;" id="pregunta_usuario" class="form-control custom-input shadow-sm" aria-describedby="basic-addon2">
+                                        <option value=" ">Seleccione la Pregunta </option>
+                                        @foreach($preguntas_array[0] as $pregunta)                                
+                                        <option value="{{ $pregunta['COD_PREGUNTA'] }}">{{ $pregunta['PREGUNTA'] }}</option>
+                                        @endforeach
+                                     </select>
                                     </div>
-                                        <div class="form-group">
-                                        <input type="text" name="respuesta" style="width: 70%;" class="form-control custom-input shadow-sm" placeholder="Ingresar respuesta" aria-describedby="basic-addon2">
+                                    <div class="form-group">
+                                        <input type="text" id="respuesta" name="respuesta" style="width: 70%;" class="form-control custom-input shadow-sm" placeholder="Ingresar respuesta" aria-describedby="basic-addon2"
+                                        oninput="mayus(this); " onkeypress="return soloLetras(event);" autocomplete="off"  oncut="return false" oncopy="return false" onpaste="return false">
                                     </div>
                                     </div>
-
                                     <div class="modal-footer">
-                                        <!-- Botón "Verificar" -->
-                                    <button type="submit" style="background-color: #1cc88a; color: white; min-width: 200px;" class="btn btn-sm shadow-sm">
-                                        <i class="fas fa-check-circle fa-sm text-white-50"></i> Verificar
-                                    </button>
+                                            <!-- Botón "Verificar" -->
+                                        <button type="submit" style="background-color: #1cc88a; color: white; min-width: 200px;" class="btn btn-sm shadow-sm">
+                                            <i class="fas fa-check-circle fa-sm text-white-50"></i> Verificar
+                                        </button>
+                                        <a href="" class="btn btn-sm btn-danger shadow-sm">
+                                            <i class="fas fa-times-circle fa-sm text-white-50"></i> Cancelar
+                                        </a>
                                     </div>
+                                    
                                 </form>
                             </div>
                         </div>
@@ -165,6 +171,60 @@
     <script src="{{ asset ('/dash/js/demo/chart-pie-demo.js') }}"></script>
     @yield('scripts')
 
+     <!-- Validar solo Mayusculas en el txt -->
+     <script type="text/javascript">
+      function mayus(e) {
+        e.value = e.value.toUpperCase();
+      }
+    </script>
+    <!-- Validar solo letras en el txt -->
+    <script>
+      function soloLetras(e){
+        key = e.keyCode || e.which;
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+        especiales = ["8-37-39-46"];
+
+        tecla_especial = false
+        for(var i in especiales){
+          if(key == especiales[i]){
+            tecla_especial = true;
+            break;
+          }
+        }
+
+        if(letras.indexOf(tecla)==-1 &&!tecla_especial){
+          return false;
+        }
+      }
+    </script>
+
+        <!-- Validar sin espacios en el usuario -->
+    <script language="javascript">
+        function noespacio(campo, event) {
+        CadenaaReemplazar = " ";
+        CadenaReemplazo = "";
+        CadenaTexto = campo.value;
+        CadenaTextoNueva = CadenaTexto.split(CadenaaReemplazar).join(CadenaReemplazo);
+        campo.value = CadenaTextoNueva;
+        }
+    </script>  
+
+     <!-- Validar solo un espacio por palabra -->
+     <script type="text/javascript">
+      document.getElementById("respuesta").addEventListener("keydown", teclear);
+      
+      var flag = false;
+      var teclaAnterior = "";
+
+      function teclear(event) {
+        teclaAnterior = teclaAnterior + " " + event.keyCode;
+        var arregloTA = teclaAnterior.split(" ");
+        if (event.keyCode == 32 && arregloTA[arregloTA.length - 2] == 32) {
+          event.preventDefault();
+        }
+      }
+    </script>
 </body>
 
 </html>

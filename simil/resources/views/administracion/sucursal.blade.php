@@ -35,7 +35,7 @@
 
 <div style="margin:1%;" class="d-sm-flex align-items-center justify-content-between mb-4" id="div_encabezado_sucursal" name="div_encabezado_sucursal">
     <h1 class="h3 mb-0 text-gray-800">
-        Modulo De Sucursales
+        Módulo de Sucursales
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#guardar_sucursal">
         <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Sucursal
@@ -51,7 +51,7 @@
 </div>
 
 <div style=" background-color: #f3b103; width: 90%; margin: 0 auto;">
-    <label style="color: white; margin: 1%;">Listado De Sucursales</label>
+    <label style="color: white; margin: 1%;">Listado de Sucursales</label>
 </div>
 
 <div style="margin:2%;"></div>
@@ -60,9 +60,9 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
-            <th style="width:70%;">Nombre</th>
-            <th style="width:15%;">Estado</th>
-            <th style="width:15%;">Editar</th>
+            <th style="width:70%;">NOMBRE DE SUCURSAL</th>
+            <th style="width:15%;">ACTIVO</th>
+            <th style="width:15%;">ACCIONES</th>
         </tr>
 
         @foreach($sucursal_array[0] as $sucursal)
@@ -122,7 +122,7 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="nombre_sucursal" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Nombre" aria-describedby="basic-addon2" value="{{ old('nombre_sucursal') }}">
+                        <input type="text" name="nombre_sucursal" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Nombre" aria-describedby="basic-addon2" value="{{ old('nombre_sucursal') }}">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -163,7 +163,7 @@
                     @endif
                     <div class="form-group">
                         Nombre
-                        <input type="text" name="editar_nombre_sucursal" id="editar_nombre_sucursal" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_nombre_sucursal') }}">
+                        <input type="text" name="editar_nombre_sucursal" id="editar_nombre_sucursal" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_nombre_sucursal') }}">
                     </div>
                     <div class="form-group">
                         Estado
@@ -233,5 +233,11 @@
             
         });
         
+
+        function mayus(e) {
+        e.value = e.value.toUpperCase();
+        }
+
+
     </script>
 @endsection

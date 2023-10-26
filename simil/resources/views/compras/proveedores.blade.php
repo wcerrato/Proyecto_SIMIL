@@ -35,7 +35,7 @@
 
 <div style="margin:1%;" class="d-sm-flex align-items-center justify-content-between mb-4" id="div_encabezado_proveedores" name="div_encabezado_proveedores">
     <h1 class="h3 mb-0 text-gray-800">
-        Modulo De Proveedores
+        Módulo de Proveedores
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#guardar_proveedor">
         <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Proveedor
@@ -51,20 +51,22 @@
 </div>
 
 <div style=" background-color: #f3b103; width: 90%; margin: 0 auto;">
-    <label style="color: white; margin: 1%;">Listado De Proveedores</label>
+    <label style="color: white; margin: 1%;">Listado de Proveedores</label>
 </div>
+
+<div style="margin:2%;"></div>
 
 <div id="div_listado_proveedores" name="div_listado_proveedores" style="width: 90%; margin: 0 auto;">
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
-            <th style="width:20%;">Nombre</th>
-            <th style="width:15%;">RTN</th>
-            <th style="width:20%;">Direccion</th>
-            <th style="width:10%;">Telefono</th>
-            <th style="width:15%;">Correo</th>
-            <th style="width:10%;">Activo</th>
-            <th style="width:10%;">Acciones</th>
+            <th style="width:20%;">NOMBRE</th>
+            <th style="width:20%;">RTN</th>
+            <th style="width:35%;">DIRECCIÓN</th>
+            <th style="width:10%;">TELÉFONO</th>
+            <th style="width:25%;">CORREO</th>
+            <th style="width:10%;">ACTIVO</th>
+            <th style="width:10%;">ACCIONES</th>
         </tr>
         
         @foreach($proveedores_array[0] as $proveedor)
@@ -133,19 +135,20 @@
                             </li>
                             @endforeach
                         </ul>
+                        
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="descripcion_proveedor" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripcion" aria-describedby="basic-addon2" value="{{ old('descripcion_proveedor') }}">
+                        <input type="text" name="descripcion_proveedor" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Nombre" aria-describedby="basic-addon2" value="{{ old('descripcion_proveedor') }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="rtn_proveedor" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="RTN" aria-describedby="basic-addon2" value="{{ old('rtn_proveedor') }}">
+                        <input type="text" name="rtn_proveedor"  style="width: 70%;" class="form-control bg-light border-0 small" placeholder="RTN" aria-describedby="basic-addon2" value="{{ old('rtn_proveedor') }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="direccion_proveedor" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Direccion" aria-describedby="basic-addon2" value="{{ old('direccion_proveedor') }}">
+                        <input type="text" name="direccion_proveedor" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Dirección" aria-describedby="basic-addon2" value="{{ old('direccion_proveedor') }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="telefono_proveedor" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Telefono" aria-describedby="basic-addon2" value="{{ old('telefono_proveedor') }}">
+                        <input type="text" name="telefono_proveedor" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Teléfono" aria-describedby="basic-addon2" value="{{ old('telefono_proveedor') }}">
                     </div>
                     <div class="form-group">
                         <input type="text" name="correo_proveedor" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Correo" aria-describedby="basic-addon2" value="{{ old('correo_proveedor') }}">
@@ -189,18 +192,18 @@
                     @endif
                     <div class="form-group">
                         Nombre
-                        <input type="text" name="editar_descripcion_proveedor" id="editar_descripcion_proveedor" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_proveedor') }}">
+                        <input type="text" name="editar_descripcion_proveedor" id="editar_descripcion_proveedor" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_proveedor') }}">
                     </div>
                     <div class="form-group">
                         RTN
                         <input type="text" name="editar_rtn_proveedor" id="editar_rtn_proveedor" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_rtn_proveedor') }}">
                     </div>
                     <div class="form-group">
-                        Direccion
-                        <input type="text" name="editar_direccion_proveedor" id="editar_direccion_proveedor" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_direccion_proveedor') }}">
+                        Dirección
+                        <input type="text" name="editar_direccion_proveedor" id="editar_direccion_proveedor" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_direccion_proveedor') }}">
                     </div>
                     <div class="form-group">
-                        Telefono
+                        Teléfono
                         <input type="text" name="editar_telefono_proveedor" id="editar_telefono_proveedor" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_telefono_proveedor') }}">
                     </div>
                     <div class="form-group">
@@ -286,6 +289,13 @@
             });
             
         });
+
+        
+        function mayus(e) {
+        e.value = e.value.toUpperCase();
+    }
+
+
         
     </script>
 @endsection

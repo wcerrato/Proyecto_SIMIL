@@ -35,7 +35,7 @@
 
 <div style="margin:1%;" class="d-sm-flex align-items-center justify-content-between mb-4" id="div_encabezado_roles" name="div_encabezado_roles">
     <h1 class="h3 mb-0 text-gray-800">
-        Modulo De Roles
+        Módulo de Roles
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#guardar_roles">
         <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Roles
@@ -51,7 +51,7 @@
 </div>
 
 <div style=" background-color: #f3b103; width: 90%; margin: 0 auto;">
-    <label style="color: white; margin: 1%;">Listado De Roles</label>
+    <label style="color: white; margin: 1%;">Listado de Roles</label>
 </div>
 
 <div style="margin:2%;"></div>
@@ -60,10 +60,10 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
-            <th style="width:20%;">Rol</th>
-            <th style="width:30%;">Descripcion</th>
-            <th style="width:10%;">Estado</th>
-            <th style="width:10%;">Editar</th>
+            <th style="width:30%;">ROL</th>
+            <th style="width:auto;">DESCRIPCIÓN</th>
+            <th style="width:10%;">ESTADO</th>
+            <th style="width:10%;">ACIONES</th>
         </tr>
         
         @foreach($Roles_array[0] as $roles)
@@ -127,10 +127,10 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="nombre_rol" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Nombre" aria-describedby="basic-addon2" value="{{ old('nombre_rol') }}">
+                        <input type="text" name="nombre_rol" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Nombre" aria-describedby="basic-addon2" value="{{ old('nombre_rol') }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="descripcion_rol" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripcion" aria-describedby="basic-addon2" value="{{ old('descripcion_rol') }}">
+                        <input type="text" name="descripcion_rol" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripcion" aria-describedby="basic-addon2" value="{{ old('descripcion_rol') }}">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -171,11 +171,11 @@
                     @endif
                     <div class="form-group">
                         Nombre
-                        <input type="text" name="editar_nombre_rol" id="editar_nombre_rol" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_nombre_rol') }}">
+                        <input type="text" name="editar_nombre_rol" id="editar_nombre_rol" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_nombre_rol') }}">
                     </div>
                     <div class="form-group">
                         Descripcion
-                        <input type="text" name="editar_descripcion_rol" id="editar_descripcion_rol" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_rol') }}">
+                        <input type="text" name="editar_descripcion_rol" id="editar_descripcion_rol" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_rol') }}">
                     </div>
 
                     <div class="form-group">
@@ -248,6 +248,11 @@
             });
             
         });
+        
+        function mayus(e) {
+        e.value = e.value.toUpperCase();
+        }
+
         
     </script>
 @endsection 

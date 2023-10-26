@@ -4,7 +4,7 @@
 
 <div style="margin:1%;" class="d-sm-flex align-items-center justify-content-between mb-4" id="div_encabezado_reportes" name="div_encabezado_reportes">
     <h1 class="h3 mb-0 text-gray-800">
-        Modulo De Reportes
+        Módulo de Reportes
     </h1>
 </div>
 
@@ -17,7 +17,7 @@
 </div>
 
 <div style=" background-color: #f3b103; width: 90%; margin: 0 auto;">
-    <label style="color: white; margin: 1%;">Listado De Reportes</label>
+    <label style="color: white; margin: 1%;">Listado de Reportes</label>
 </div>
 
 <div style="margin:2%;"></div>
