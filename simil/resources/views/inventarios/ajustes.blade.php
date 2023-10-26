@@ -60,11 +60,11 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
-            <th style="width:15%;">Fecha</th>
-            <th style="width:15%;">Tipo</th>
-            <th style="width:50%;">Producto</th>
-            <th style="width:10%;">Cantidad</th>
-            <th style="width:10%;">Estado</th>
+            <th style="width:15%;">FECHA</th>
+            <th style="width:15%;">TIPO</th>
+            <th style="width:50%;">PRODUCTO</th>
+            <th style="width:10%;">CANTIDAD</th>
+            <th style="width:10%;">ESTADO</th>
         </tr>
         
         @foreach($ajustes_array[0] as $ajustes)

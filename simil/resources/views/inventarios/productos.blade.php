@@ -39,6 +39,7 @@
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#guardar_producto">
         <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar 
+    </a>
 </div>
 
 <div class="row">
@@ -138,10 +139,10 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="nombre_producto" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Nombre" aria-describedby="basic-addon2" value="{{ old('nombre_producto') }}">
+                        <input type="text" name="nombre_producto" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Nombre" aria-describedby="basic-addon2" value="{{ old('nombre_producto') }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="descripcion_producto" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripción" aria-describedby="basic-addon2" value="{{ old('descripcion_producto') }}">
+                        <input type="text" name="descripcion_producto" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripción" aria-describedby="basic-addon2" value="{{ old('descripcion_producto') }}">
                     </div>
                     <div class="form-group">
                         <input type="text" name="cantidad_producto" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Cantidad" aria-describedby="basic-addon2" value="{{ old('cantidad_producto') }}">
@@ -195,11 +196,11 @@
                     @endif
                     <div class="form-group">
                         Nombre
-                        <input type="text" name="editar_nombre_producto" id="editar_nombre_producto" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_nombre_producto') }}">
+                        <input type="text" name="editar_nombre_producto" id="editar_nombre_producto" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_nombre_producto') }}">
                     </div>
                     <div class="form-group">
                         Descripción
-                        <input type="text" name="editar_descripcion_producto" id="editar_descripcion_producto" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_producto') }}">
+                        <input type="text" name="editar_descripcion_producto" id="editar_descripcion_producto" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_producto') }}">
                     </div>
                     <div class="form-group">
                         Cantidad
@@ -296,11 +297,6 @@
             });
             
         });
-
-        //Función que valida las mayúsculas
-        function mayus(e) {
-        e.value = e.value.toUpperCase();
-    }
         
     </script>
 @endsection
