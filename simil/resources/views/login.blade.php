@@ -95,7 +95,7 @@
                                         </div>
                                         @endif
 
-                                       <div class="form-group">
+                                        <div class="form-group">
                                             <div class="input-group">
                                                 <input type="text" name="usuario" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Ingresar Usuario" aria-describedby="basic-addon2" oninput="mayus(this); noespacio(this);" onkeypress="return soloLetras(event);"´
                                                 autocomplete="off"  oncut="return false" oncopy="return false" onpaste="return false">

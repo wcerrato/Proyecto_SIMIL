@@ -14,9 +14,7 @@ class HomeController extends Controller
         if(session('login') == 'TRUE'){
             
             return view('home');
-         
         }else if(session('login') == 'FALSE'){    
-         
             return view('login');
             
         }else{
