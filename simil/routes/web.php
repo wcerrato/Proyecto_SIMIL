@@ -124,6 +124,8 @@ Route::get('/usuarios/objetos', [App\Http\Controllers\usuarios\ObjetosController
 Route::post('/usuarios/objetos', [App\Http\Controllers\usuarios\ObjetosController::class, 'guardar_objetos']);
 Route::put('/usuarios/objetos', [App\Http\Controllers\usuarios\ObjetosController::class, 'editar_objetos']);
 
+Route::get('/verificar_objeto/{objetos}', [App\Http\Controllers\usuarios\ObjetosController::class, 'verificar_objeto']);
+
 //RUTAS MODULO DE USUARIOS - BITACORA
 Route::get('/usuarios/bitacora', [App\Http\Controllers\usuarios\BitacoraController::class, 'index']);
 Route::get('/bitacora', [BitacoraController::class, 'index'])->name('bitacora.index');

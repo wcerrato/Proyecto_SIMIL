@@ -9,6 +9,25 @@ use Validator;
 
 class ObjetosController extends Controller
 {
+
+    public function verificar_objeto($objeto)
+    {
+
+        // Verificar si el usuario existe en la base de datos
+       // $existeUsuario = User::where('Usuario', $usuario)->exists();
+
+       // Verificar si el usuario existe en la base de datos
+       $existeObjeto = Objetos::where('Objeto', $objeto)->exists();
+       //dd($existeUsuario);
+
+       // Devolver 1 si el usuario existe, 0 si no existe
+       return response()->json(['existe' => $existeObjeto], 200);
+    }
+
+
+
+
+
     public function index() {
         
         if(session('login')=='TRUE'){

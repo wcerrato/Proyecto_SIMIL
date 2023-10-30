@@ -131,7 +131,7 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="nombre_objeto" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Nombre" aria-describedby="basic-addon2" value="{{ old('nombre_objeto') }}">
+                        <input type="text" name="nombre_objeto" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Objeto" aria-describedby="basic-addon2" value="{{ old('nombre_objeto') }}">
                     </div>
                     <div class="form-group">
                         <input type="text" name="descripcion_objeto" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripcion" aria-describedby="basic-addon2" value="{{ old('descripcion_objeto') }}">
@@ -177,7 +177,7 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        Nombre
+                        Objeto
                         <input type="text" name="editar_nombre_objeto" id="editar_nombre_objeto" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_nombre_objeto') }}">
                     </div>
                     <div class="form-group">
@@ -271,4 +271,37 @@
 
         
     </script>
+
+<script>
+        $(document).ready(function () {
+            // Al escribir en el campo "Objeto"
+            $("#nombre_objeto").on("input", function () {
+                var objeto = $(this).val();
+                //alert(usuario);
+
+                // Realizar la petición Ajax para verificar si el Correo existe
+                $.ajax({
+                    url: "/verificar_objeto/"+objeto,
+                    type: "GET",
+                    data: "data",
+                    dataType: "json",
+                    success: function (response) {
+                      console.log(response);
+                        if (response.existe) {
+                            // El usuario existe, mostrar mensaje de error
+                            $("#error-nombre_objeto").text("Este correo ya está en uso. Por favor, elige otro.");
+                            $("#btnEditar").prop("disabled", true);
+                        } else {
+                            // El usuario no existe, quitar mensaje de error y habilitar el botón de registro
+                            $("#error-nombre_objeto").empty();
+                            $("#btnEditar").prop("disabled", false);
+                        }
+                    },
+                });
+            });
+        });
+    </script>
+
+
+
 @endsection 

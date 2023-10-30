@@ -38,7 +38,7 @@
         Módulo de Tipo de Factura
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#guardar_tipo_factura">
-        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Tipo de Factura
+        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar
     </a>
 </div>
 
@@ -60,14 +60,18 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
+            <th style="width:10%">ID</th>
             <th style="width:60%">NOMBRE DE TIPO DE FACTURA</th>
-            <th style="width:10%">ACTIVO</th>
+            <th style="width:10%">ESTADO</th>
             <th style="width:10%">ACCIONES</th>
         </tr>
         
         @foreach($tipo_factura_array[0] as $tipo_factura)
         
         <tr>
+                <td>
+                <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="codigo_tipo_factura{{$tipo_factura['COD_TIPO_FACTURA']}}" name="codigo_tipo_factura{{$tipo_factura['COD_TIPO_FACTURA']}}" value="{{$tipo_factura['COD_TIPO_FACTURA']}}">
+                </td>
             <td>
                 <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="nom_tipo_factura{{$tipo_factura['COD_TIPO_FACTURA']}}" name="nom_tipo_factura{{$tipo_factura['COD_TIPO_FACTURA']}}" value="{{$tipo_factura['NOM_TIPO_FACTURA']}}">
             </td>
@@ -75,13 +79,13 @@
             @if( $tipo_factura['ESTADO'] == 'A' )
             
                 <td>
-                    <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_tipo_factura{{$tipo_factura['COD_TIPO_FACTURA']}}" name="estado_tipo_factura{{$tipo_factura['COD_TIPO_FACTURA']}}" value="SI">
+                    <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_tipo_factura{{$tipo_factura['COD_TIPO_FACTURA']}}" name="estado_tipo_factura{{$tipo_factura['COD_TIPO_FACTURA']}}" value="ACTIVO">
                 </td>
             
             @else
             
                 <td>
-                    <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_tipo_factura{{$tipo_factura['COD_TIPO_FACTURA']}}" name="estado_tipo_factura{{$tipo_factura['COD_TIPO_FACTURA']}}" value="NO">
+                    <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_tipo_factura{{$tipo_factura['COD_TIPO_FACTURA']}}" name="estado_tipo_factura{{$tipo_factura['COD_TIPO_FACTURA']}}" value="INACTIVO">
                 </td>
             
             @endif
@@ -122,7 +126,8 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="descripcion_tipo_factura" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripción" aria-describedby="basic-addon2" value="{{ old('descripcion_tipo_factura') }}">
+                       Nombre de Tipo de Factura
+                        <input type="text" name="nombre_tipo_factura" onkeyup="mayus(this);" style="width: 70%;" class="form-control custom-input " aria-describedby="basic-addon2" value="{{ old('nombre_tipo_factura') }}">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -162,14 +167,18 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        Descripción
-                        <input type="text" name="editar_descripcion_tipo_factura" id="editar_descripcion_tipo_factura" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_tipo_factura') }}">
+                        ID
+                        <input type="text" readonly="readonly" name="editar_cod_tipo_factura" id="editar_cod_tipo_factura" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_cod_tipo_factura') }}">
+                    </div>
+                    <div class="form-group">
+                        Nombre de Tipo de Factura
+                        <input type="text" name="editar_nombre_tipo_factura" id="editar_nombre_tipo_factura" oninput="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_nombre_tipo_factura') }}">
                     </div>
                     <div class="form-group">
                         Estado
                         <select name="editar_estado_tipo_factura" id="editar_estado_tipo_factura" style="width: 70%;" class="form-control bg-light border-0 small">
-                            <option value="A">SI</option>
-                            <option value="I">NO</option>
+                            <option value="A">ACTIVO</option>
+                            <option value="I">INACTIVO</option>
                         </select>
                     </div>
                 </div>
@@ -181,7 +190,8 @@
                         <i class="fas fa-times-circle fa-sm text-white-50"></i> Cerrar
                     </button>
                 </div>
-                <input type="hidden" id="editar_codigo_tipo_factura" name="editar_codigo_tipo_factura">
+                
+    <!-- <input type="hidden" id="editar_codigo_tipo_factura" name="editar_codigo_tipo_factura"> -->
             </form>
         </div>
     </div>
@@ -217,10 +227,10 @@
                 nom_tipo_factura = $('#nom_tipo_factura'+cod_tipo_factura).val();
                 estado_tipo_factura = $('#estado_tipo_factura'+cod_tipo_factura).val();
                     
-                $('#editar_codigo_tipo_factura').val(cod_tipo_factura);
-                $('#editar_descripcion_tipo_factura').val(nom_tipo_factura);
+                $('#editar_cod_tipo_factura').val(cod_tipo_factura);
+                $('#editar_nombre_tipo_factura').val(nom_tipo_factura);
                 
-                if(estado_tipo_factura == 'SI'){
+                if(estado_tipo_factura == 'ACTIVO'){
                     
                     document.getElementById("editar_estado_tipo_factura").selectedIndex = 0;
                     
@@ -234,11 +244,16 @@
             
         });
 
-        
-        function mayus(e) {
-        e.value = e.value.toUpperCase();
-        }
+  
 
-        
     </script>
+
+  <!-- Validar solo Mayusculas en el txt -->
+    <script type="text/javascript">
+      function mayus(e) {
+        e.value = e.value.toUpperCase();
+      }
+      </script>
+
+
 @endsection

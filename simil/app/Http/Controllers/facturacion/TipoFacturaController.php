@@ -29,8 +29,8 @@ class TipoFacturaController extends Controller
     public function editar_tipo_factura(Request $request){
 
         $validator = Validator::make($request->all(),[
-            
-            'editar_descripcion_tipo_factura' => 'required|min:5|max:50',
+            'editar_cod_tipo_factura' => 'required',
+            'editar_nombre_tipo_factura' => 'required|min:5|max:150',
             
         ]);
         
@@ -45,9 +45,9 @@ class TipoFacturaController extends Controller
 
             HTTP::put('http://127.0.0.1:9000/api/simil/facturas/',[
                 'PV_ACCION' => 'tipo_factura', 
-                'PV_NOM_TIPO_FACTURA' => $request->editar_descripcion_tipo_factura,
+                'PV_NOM_TIPO_FACTURA' => $request->editar_nombre_tipo_factura,
                 'PE_ESTADO' => $request->editar_estado_tipo_factura, 
-                'PB_COD_TIPO_FACTURA' => $request->editar_codigo_tipo_factura
+                'PB_COD_TIPO_FACTURA' => $request->editar_cod_tipo_factura
             ]);
 
             return back()->with('mensaje_guardado','Tipo de factura editada correctamente.');
@@ -61,7 +61,7 @@ class TipoFacturaController extends Controller
         
         $validator = Validator::make($request->all(),[
             
-            'descripcion_tipo_factura' => 'required|min:5|max:50',
+            'nombre_tipo_factura' => 'required|min:5|max:150',
             
           
         ]);
@@ -78,7 +78,7 @@ class TipoFacturaController extends Controller
             HTTP::post('http://127.0.0.1:9000/api/simil/facturas/',[
                         'PV_ACCION' => 'tipo_factura', 
                         'PE_ESTADO' => 'A', 
-                        'PV_NOM_TIPO_FACTURA' => $request->descripcion_tipo_factura, 
+                        'PV_NOM_TIPO_FACTURA' => $request->nombre_tipo_factura, 
                        
             ]);
             
