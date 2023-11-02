@@ -29,7 +29,8 @@ class CategoriasController extends Controller
 
         $validator = Validator::make($request->all(),[
             
-            'editar_descripcion_categoria' => 'required|min:5|max:50'
+            'editar_codigo_categoria' => 'required',
+            'editar_descripcion_categoria' => 'required|min:5|max:150'
             
         ]);
         
@@ -49,7 +50,7 @@ class CategoriasController extends Controller
                 'PB_COD_CATEGORIA' => $request->editar_codigo_categoria
             ]);
 
-            return back()->with('mensaje_guardado','Categoria editado correctamente.');
+            return back()->with('mensaje_guardado','Categoría editada correctamente.');
             
         }
         
@@ -59,7 +60,7 @@ class CategoriasController extends Controller
         
         $validator = Validator::make($request->all(),[
             
-            'descripcion_categoria' => 'required|min:5|max:50'
+            'descripcion_categoria' => 'required|min:5|max:150'
             
         ]);
         
@@ -78,7 +79,7 @@ class CategoriasController extends Controller
                         'PV_NOM_CATEGORIA' => $request->descripcion_categoria
             ]);
             
-            return back()->with('mensaje_guardado','Categoria guardado correctamente.');
+            return back()->with('mensaje_guardado','Categoría guardada correctamente.');
             
         }
         

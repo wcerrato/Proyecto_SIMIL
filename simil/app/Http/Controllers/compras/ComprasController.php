@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Validator;
+use Illuminate\Validation\Rule;
+
+
+
+
 
 class ComprasController extends Controller
 {
@@ -17,11 +22,16 @@ class ComprasController extends Controller
             $compras_array = $compras->json();
             
 
-            $compras = HTTP::get('http://127.0.0.1:9000/api/simil/compras/PROVEEDOR');
-            $compras_array = $compras->json();
+            $proveedores = HTTP::get('http://127.0.0.1:9000/api/simil/compras/PROVEEDOR');
+            $proveedores_array = $proveedores->json();
+            
+            
+            $forma_pago = HTTP::get('http://127.0.0.1:9000/api/simil/facturas/forma_pago');
+            $forma_pago_array = $forma_pago->json();
+            
 
 
-            return view('/compras/compras', compact('compras_array'));
+            return view('/compras/compras', compact('compras_array','proveedores_array','forma_pago_array'));
 
 
             
@@ -33,15 +43,13 @@ class ComprasController extends Controller
         
     }
 
-    public function editar_compras(Request $request){
+    public function editar_compra(Request $request){
 
         $validator = Validator::make($request->all(),[
             
             'editar_fecha_compra' => 'required|min:8|max:10',
             'editar_total_compra' => 'required|min:1|max:20',
-            'editar_factura_compra' => 'required|min:1|max:20',
-            'editar_proveedor_compra' => 'required|min:8|max:20',
-            'editar_pago_compra' => 'required|min:8|max:20'
+            'editar_factura_compra' => 'required|min:1|max:20'
 
         ]);
         
@@ -54,7 +62,7 @@ class ComprasController extends Controller
             
         }else{
 
-            HTTP::put('http://127.0.0.1:9000/api/simil/compras/',[
+            HTTP::put('http://127.0.0.1:9000/api/simil/',[
                 'PV_ACCION' => 'ENC_COMPRAS', 
                 'PT_FEC_COMPRA' => $request->editar_fecha_compra,
                 'PD_TOT_COMPRA' => $request->editar_total_compra, 
@@ -73,15 +81,14 @@ class ComprasController extends Controller
         
     }
     
-    public function guardar_compras (Request $request){
+    public function guardar_compra(Request $request){
         
         $validator = Validator::make($request->all(),[
             
             'fecha_compra' => 'required|min:8|max:10',
             'total_compra' => 'required|min:1|max:20',
-            'factura_compra' => 'required|min:1|max:20',
-            'proveedor_compra' => 'required|min:8|max:20',
-            'pago_compra' => 'required|min:8|max:20'
+            'factura_compra' => 'required|min:1|max:20'
+
             
         ]);
         
@@ -96,14 +103,14 @@ class ComprasController extends Controller
             
             
             
-            HTTP::post('http://127.0.0.1:9000/api/simil/compras/',[
+            HTTP::post('http://127.0.0.1:9000/api/simil/',[
                         'PV_ACCION' => 'ENC_COMPRAS', 
                         'PE_ESTADO' => 'A', 
-                        'FEC_COMPRA' => $request->fecha_compra,
-                        'TOT_COMPRA' => $request->total_compra,
-                        'FACTURA_NO' => $request->factura_compra, 
-                        'COD_PROVEEDOR' => $request->proveedor_compra,
-                        'COD_FORMA_PAGO' => $request->proveedor_compra
+                        'PT_FEC_COMPRA' => $request->fecha_compra,
+                        'PD_TOT_COMPRA' => $request->total_compra,
+                        'PV_FACTURA_NO' => $request->factura_compra, 
+                        'PB_COD_PROVEEDOR' => $request->proveedor_compra,
+                        'PB_COD_FORMA_PAGO' => $request->pago_compra
             ]);
             
             return back()->with('mensaje_guardado','Compra guardada correctamente.');

@@ -28,8 +28,9 @@ class FormaPagoController extends Controller
     public function editar_forma_pago(Request $request){
 
         $validator = Validator::make($request->all(),[
-            
-            'editar_descripcion_forma_pago' => 'required|min:5|max:50'
+
+            'editar_codigo_forma_pago' => 'required',
+            'editar_descripcion_forma_pago' => 'required|min:5|max:150'
             
         ]);
         
@@ -49,7 +50,7 @@ class FormaPagoController extends Controller
                 'PB_COD_FORMA_PAGO' => $request->editar_codigo_forma_pago
             ]);
 
-            return back()->with('mensaje_guardado','Forma de pago editado correctamente.');
+            return back()->with('mensaje_guardado','Forma de pago editada correctamente.');
             
         }
         
@@ -59,7 +60,7 @@ class FormaPagoController extends Controller
         
         $validator = Validator::make($request->all(),[
             
-            'descripcion_forma_pago' => 'required|min:5|max:50'
+            'descripcion_forma_pago' => 'required|min:5|max:150'
             
         ]);
         
@@ -78,7 +79,7 @@ class FormaPagoController extends Controller
                         'PV_NOM_FORMA_PAGO' => $request->descripcion_forma_pago
             ]);
             
-            return back()->with('mensaje_guardado','Forma de pago guardado correctamente.');
+            return back()->with('mensaje_guardado','Forma de pago guardada correctamente.');
             
         }
         

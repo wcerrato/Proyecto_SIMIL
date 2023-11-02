@@ -38,7 +38,7 @@
         Módulo de Categorías
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#guardar_categoria">
-        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Categoría
+        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar
     </a>
 </div>
 
@@ -60,8 +60,9 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
+            <th style="width:10%">ID</th>
             <th style="width:60%">NOMBRE DE CATEGORÍA </th>
-            <th style="width:10%">ACTIVO</th>
+            <th style="width:10%">ESTADO</th>
             <th style="width:10%">ACCIONES</th>
         </tr>
         
@@ -69,19 +70,22 @@
         
             <tr>
                 <td>
+                <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="cod_categoria{{$categoria['COD_CATEGORIA']}}" name="cod_categoria{{$categoria['COD_CATEGORIA']}}" value="{{$categoria['COD_CATEGORIA']}}">
+                </td>
+                <td>
                     <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="descripcion_categoria{{$categoria['COD_CATEGORIA']}}" name="descripcion_categoria{{$categoria['COD_CATEGORIA']}}" value="{{$categoria['NOM_CATEGORIA']}}">
                 </td>
                 
                 @if( $categoria['ESTADO'] == 'A' )
                 
                     <td>
-                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_categoria{{$categoria['COD_CATEGORIA']}}" name="estado_categoria{{$categoria['COD_CATEGORIA']}}" value="SI">
+                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_categoria{{$categoria['COD_CATEGORIA']}}" name="estado_categoria{{$categoria['COD_CATEGORIA']}}" value="ACTIVO">
                     </td>
                 
                 @else
                 
                     <td>
-                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_categoria{{$categoria['COD_CATEGORIA']}}" name="estado_categoria{{$categoria['COD_CATEGORIA']}}" value="NO">
+                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_categoria{{$categoria['COD_CATEGORIA']}}" name="estado_categoria{{$categoria['COD_CATEGORIA']}}" value="INACTIVO">
                     </td>
                 
                 @endif
@@ -123,7 +127,8 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="descripcion_categoria" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Nombre Categoría" aria-describedby="basic-addon2" value="{{ old('descripcion_categoria') }}">
+                    Nombre Categoría
+                        <input type="text" name="descripcion_categoria" oninput="mayus(this);" style="width: 70%;"  class="form-control custom-input " aria-describedby="basic-addon2" value="{{ old('descripcion_categoria') }}">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -163,14 +168,18 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        Nombre Categoría
-                        <input type="text" name="editar_descripcion_categoria" id="editar_descripcion_categoria" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_categoria') }}">
+                        ID
+                        <input type="text" readonly="readonly" name="editar_codigo_categoria" id="editar_codigo_categoria" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_codigo_categoria') }}">
+                    </div>
+                    <div class="form-group">
+                        Nombre de Categoría
+                        <input type="text" name="editar_descripcion_categoria" id="editar_descripcion_categoria" oninput="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_categoria') }}">
                     </div>
                     <div class="form-group">
                         Estado
                         <select name="editar_estado_categoria" id="editar_estado_categoria" style="width: 70%;" class="form-control bg-light border-0 small">
-                            <option value="A">SI</option>
-                            <option value="I">NO</option>
+                            <option value="A">ACTIVO</option>
+                            <option value="I">INACTIVO</option>
                         </select>
                     </div>
                 </div>
@@ -182,7 +191,7 @@
                         <i class="fas fa-times-circle fa-sm text-white-50"></i> Cerrar
                     </button>
                 </div>
-                <input type="hidden" id="editar_codigo_categoria" name="editar_codigo_categoria">
+                 <!--  <input type="hidden" id="editar_codigo_categoria" name="editar_codigo_categoria"> -->
             </form>
         </div>
     </div>
@@ -220,7 +229,7 @@
                 $('#editar_codigo_categoria').val(cod_categoria);
                 $('#editar_descripcion_categoria').val(descripcion_categoria);
                 
-                if(estado_categoria == 'SI'){
+                if(estado_categoria == 'ACTIVO'){
                     
                     document.getElementById("editar_estado_categoria").selectedIndex = 0;
                     
@@ -233,13 +242,17 @@
             });
             
         });
-
-        
-        function mayus(e) {
-        e.value = e.value.toUpperCase();
-    }
-
-
-        
+   
     </script>
+
+
+
+<!-- Validar solo Mayusculas en el txt -->
+  <script type="text/javascript">
+    function mayus(e) {
+      e.value = e.value.toUpperCase();
+    }
+    </script>
+
+
 @endsection

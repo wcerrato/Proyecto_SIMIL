@@ -29,7 +29,8 @@ class DescuentosController extends Controller
 
         $validator = Validator::make($request->all(),[
             
-            'editar_descripcion_descuento' => 'required|min:5|max:50',
+            'editar_codigo_descuento' => 'required',
+            'editar_descripcion_descuento' => 'required|min:5|max:150',
             'editar_porcentaje_descuento' => 'required|integer|between:0,100'
             
         ]);
@@ -61,7 +62,7 @@ class DescuentosController extends Controller
         
         $validator = Validator::make($request->all(),[
             
-            'descripcion_descuento' => 'required|min:5|max:50',
+            'descripcion_descuento' => 'required|min:5|max:150',
             'porcentaje_descuento' => 'required|integer|between:0,100'
             
         ]);

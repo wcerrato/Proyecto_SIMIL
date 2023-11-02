@@ -38,7 +38,7 @@
         Módulo de Numeraciones SAR
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#guardar_numeracion_sar">
-        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Numeración
+        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar
     </a>
 </div>
 
@@ -60,18 +60,22 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
-            <th style="width:20%;">NÚMERO INICIAL</th>
-            <th style="width:20%;">NÚMERO FINAL</th>
-            <th style="width:20%;">NÚMERO ACTUAL</th>
-            <th style="width:%;">FECHA DE VENCIMIENTO</th>
-            <th style="width:25%;">NÚMERO CAI</th>
-            <th style="width:10%;">ACTIVO</th>
-            <th style="width:20%;">ACCIONES</th>
+            <th style="width:7%;">ID</th>
+            <th style="width:15%;">RANGO INICIAL</th>
+            <th style="width:15%;">RANGO FINAL</th>
+            <th style="width:15%;">RANGO ACTUAL</th>
+            <th style="width:15%;">FECHA DE VENCIMIENTO</th>
+            <th style="width:15%;">NÚMERO CAI</th>
+            <th style="width:10%;">ESTADO</th>
+            <th style="width:10%;">ACCIONES</th>
         </tr>
         
         @foreach($numeracion_sar_array[0] as $numeracion_sar)
         
             <tr>
+                <td>
+                <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="cod_numeracion_sar{{$numeracion_sar['COD_TALONARIO_CAI']}}" name="cod_numeracion_sar{{$numeracion_sar['COD_TALONARIO_CAI']}}" value="{{$numeracion_sar['COD_TALONARIO_CAI']}}">
+                </td>
                 <td>
                     <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="rango_inicial_numeracion_sar{{$numeracion_sar['COD_TALONARIO_CAI']}}" name="rango_inicial_numeracion_sar{{$numeracion_sar['COD_TALONARIO_CAI']}}" value="{{$numeracion_sar['RANGO_INICIAL']}}">
                 </td>
@@ -91,13 +95,13 @@
                 @if( $numeracion_sar['ESTADO'] == 'A' )
                 
                     <td>
-                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_numeracion_sar{{$numeracion_sar['COD_TALONARIO_CAI']}}" name="estado_numeracion_sar{{$numeracion_sar['COD_TALONARIO_CAI']}}" value="SI">
+                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_numeracion_sar{{$numeracion_sar['COD_TALONARIO_CAI']}}" name="estado_numeracion_sar{{$numeracion_sar['COD_TALONARIO_CAI']}}" value="ACTIVO">
                     </td>
                 
                 @else
                 
                     <td>
-                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_numeracion_sar{{$numeracion_sar['COD_TALONARIO_CAI']}}" name="estado_numeracion_sar{{$numeracion_sar['COD_TALONARIO_CAI']}}" value="NO">
+                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_numeracion_sar{{$numeracion_sar['COD_TALONARIO_CAI']}}" name="estado_numeracion_sar{{$numeracion_sar['COD_TALONARIO_CAI']}}" value="INACTIVO">
                     </td>
                 
                 @endif
@@ -138,19 +142,24 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="rango_inicial_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Número Inicial" aria-describedby="basic-addon2" value="{{ old('rango_inicial_numeracion_sar') }}">
+                        Rango Inicial
+                        <input type="text" name="rango_inicial_numeracion_sar" style="width: 70%;" class="form-control custom-input " aria-describedby="basic-addon2" value="{{ old('rango_inicial_numeracion_sar') }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="rango_final_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Número Final" aria-describedby="basic-addon2" value="{{ old('rango_final_numeracion_sar') }}">
+                        Rango Final
+                        <input type="text" name="rango_final_numeracion_sar" style="width: 70%;" class="form-control custom-input " aria-describedby="basic-addon2" value="{{ old('rango_final_numeracion_sar') }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="rango_actual_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Número Actual" aria-describedby="basic-addon2" value="{{ old('rango_actual_numeracion_sar') }}">
+                        Rango Actual
+                        <input type="text" name="rango_actual_numeracion_sar" style="width: 70%;"class="form-control custom-input " aria-describedby="basic-addon2" value="{{ old('rango_actual_numeracion_sar') }}">
                     </div>
                     <div class="form-group">
-                        <input type="date" name="fecha_vencimiento_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Fecha de Vencimiento" aria-describedby="basic-addon2" value="{{ old('fecha_vencimiento_numeracion_sar') }}">
+                        Fecha de Vencimiento
+                        <input type="date" name="fec_vencimiento_numeracion_sar" style="width: 70%;" class="form-control custom-input " aria-describedby="basic-addon2" value="{{ old('fec_vencimiento_numeracion_sar') }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="num_cai_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="CAI" aria-describedby="basic-addon2" value="{{ old('num_cai_numeracion_sar') }}">
+                        Número CAI
+                        <input type="text" name="num_cai_numeracion_sar" style="width: 70%;" class="form-control custom-input " aria-describedby="basic-addon2" value="{{ old('num_cai_numeracion_sar') }}">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -190,15 +199,19 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        Número Inicial
+                        ID
+                        <input type="text" readonly="readonly" name="editar_codigo_numeracion_sar" id="editar_codigo_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_codigo_numeracion_sar') }}">
+                    </div>
+                    <div class="form-group">
+                        Rango Inicial
                         <input type="text" name="editar_rango_inicial_numeracion_sar" id="editar_rango_inicial_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_rango_inicial_numeracion_sar') }}">
                     </div>
                     <div class="form-group">
-                        Número Final
+                        Rango Final
                         <input type="text" name="editar_rango_final_numeracion_sar" id="editar_rango_final_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_rango_final_numeracion_sar') }}">
                     </div>
                     <div class="form-group">
-                        Número Final
+                        Rango Actual
                         <input type="text" name="editar_rango_actual_numeracion_sar" id="editar_rango_actual_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_rango_actual_numeracion_sar') }}">
                     </div>
                     <div class="form-group">
@@ -206,14 +219,14 @@
                         <input type="date" name="editar_fecha_vencimiento_numeracion_sar" id="editar_fecha_vencimiento_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_fecha_vencimiento_numeracion_sar') }}">
                     </div>
                     <div class="form-group">
-                        CAI
+                        Número CAI
                         <input type="text" name="editar_num_cai_numeracion_sar" id="editar_num_cai_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_num_cai_numeracion_sar') }}">
                     </div>
                     <div class="form-group">
                         Estado
                         <select name="editar_estado_numeracion_sar" id="editar_estado_numeracion_sar" style="width: 70%;" class="form-control bg-light border-0 small">
-                            <option value="A">SI</option>
-                            <option value="I">NO</option>
+                            <option value="A">ACTIVO</option>
+                            <option value="I">INACTIVO</option>
                         </select>
                     </div>
                 </div>
@@ -225,7 +238,7 @@
                         <i class="fas fa-times-circle fa-sm text-white-50"></i> Cerrar
                     </button>
                 </div>
-                <input type="hidden" id="editar_codigo_numeracion_sar" name="editar_codigo_numeracion_sar">
+                 <!-- <input type="hidden" id="editar_codigo_numeracion_sar" name="editar_codigo_numeracion_sar"> -->
             </form>
         </div>
     </div>
@@ -241,7 +254,7 @@
         var rango_final = 0;
         var rango_actual = 0;
         var fecha_limite = '';
-        var cai = '';
+        var cai = 0;
         var estado_numeracion_sar = '';
         
         $(document).ready(function(){
@@ -275,7 +288,7 @@
                 $('#editar_fecha_vencimiento_numeracion_sar').val(fecha_limite);
                 $('#editar_num_cai_numeracion_sar').val(cai);
                 
-                if(estado_numeracion_sar == 'SI'){
+                if(estado_numeracion_sar == 'ACTIVO'){
                     
                     document.getElementById("editar_estado_numeracion_sar").selectedIndex = 0;
                     
@@ -289,11 +302,6 @@
             
         });
 
-        
-        function mayus(e) {
-        e.value = e.value.toUpperCase();
-        }
-
-        
+         
     </script>
 @endsection

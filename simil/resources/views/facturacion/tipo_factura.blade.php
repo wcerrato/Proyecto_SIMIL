@@ -70,7 +70,7 @@
         
         <tr>
                 <td>
-                <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="codigo_tipo_factura{{$tipo_factura['COD_TIPO_FACTURA']}}" name="codigo_tipo_factura{{$tipo_factura['COD_TIPO_FACTURA']}}" value="{{$tipo_factura['COD_TIPO_FACTURA']}}">
+                <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="cod_tipo_factura{{$tipo_factura['COD_TIPO_FACTURA']}}" name="cod_tipo_factura{{$tipo_factura['COD_TIPO_FACTURA']}}" value="{{$tipo_factura['COD_TIPO_FACTURA']}}">
                 </td>
             <td>
                 <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="nom_tipo_factura{{$tipo_factura['COD_TIPO_FACTURA']}}" name="nom_tipo_factura{{$tipo_factura['COD_TIPO_FACTURA']}}" value="{{$tipo_factura['NOM_TIPO_FACTURA']}}">
@@ -127,7 +127,7 @@
                     @endif
                     <div class="form-group">
                        Nombre de Tipo de Factura
-                        <input type="text" name="nombre_tipo_factura" onkeyup="mayus(this);" style="width: 70%;" class="form-control custom-input " aria-describedby="basic-addon2" value="{{ old('nombre_tipo_factura') }}">
+                        <input type="text" name="nombre_tipo_factura" oninput="mayus(this);" style="width: 70%;" class="form-control custom-input " aria-describedby="basic-addon2" value="{{ old('nombre_tipo_factura') }}">
                     </div>
                 </div>
                 <div class="modal-footer">

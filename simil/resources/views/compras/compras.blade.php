@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('contenido')
-
+COD_PROVEEDOR 
 <style>
 
     .modal {
@@ -85,12 +85,14 @@
                 </td>
                 <td>
                     <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="proveedor_compra{{$compra['COD_ENC_COMPRA']}}" name="proveedor_compra{{$compra['COD_ENC_COMPRA']}}" value="{{$compra['NOM_PROVEEDOR']}}">
-                    <input type="hidden" id="proveedor_compras_id{{$usuario['COD_USUARIO']}}" nombre="proveedor_compras_id{{$compra['COD_ENC_COMPRA']}}" value="{{$compra['COD_ENC_COMPRA']}}">
+                    <input type="hidden" id="proveedor_compra_id{{$compra['COD_ENC_COMPRA']}}" nombre="proveedor_compra_id{{$compra['COD_ENC_COMPRA']}}" value="{{$compra['COD_PROVEEDOR']}}">
                 </td>
 
                 <td>
-                    <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="pago_compra{{$compra['COD_ENC_COMPRA']}}" name="pago_compra{{$compra['COD_ENC_COMPRA']}}" value="{{$compra['COD_FORMA_PAGO']}}">
+                    <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="pago_compra{{$compra['COD_ENC_COMPRA']}}" name="pago_compra{{$compra['COD_ENC_COMPRA']}}" value="{{$compra['NOM_FORMA_PAGO']}}">
+                    <input type="hidden" id="pago_compra_id{{$compra['COD_ENC_COMPRA']}}" nombre="pago_compra_id{{$compra['COD_ENC_COMPRA']}}" value="{{$compra['COD_FORMA_PAGO']}}">
                 </td>
+
 
                 @if( $compra['ESTADO'] == 'A' )
 
@@ -116,6 +118,9 @@
     </table>
 </div>
     
+
+
+
 <!-- Modal Agregar-->
 <div class="modal fade" id="guardar_compra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -152,11 +157,19 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name="proveedor_compra" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Proveedor" aria-describedby="basic-addon2" value="{{ old('proveedor_compra') }}">
+                        <select name="proveedor_compra" id="proveedor_compra" class="form-control bg-light border-0 small" aria-describedby="basic-addon2">
+                            @foreach($proveedores_array[0] as $proveedor)
+                                <option value="{{$proveedor['COD_PROVEEDOR']}}">{{$proveedor['NOM_PROVEEDOR']}}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name="pago_compra" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Forma de pago" aria-describedby="basic-addon2" value="{{ old('pago_compra') }}">
+                        <select name="pago_compra" id="pago_compra" class="form-control bg-light border-0 small" aria-describedby="basic-addon2">
+                            @foreach($forma_pago_array[0] as $forma_pago)
+                                <option value="{{$forma_pago['COD_FORMA_PAGO']}}">{{$forma_pago['NOM_FORMA_PAGO']}}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                 </div>
@@ -210,13 +223,20 @@
                     </div>
                     <div class="form-group">
                         Proveedor
-                        <input type="text" name="editar_proveedor_compra" id="editar_proveedor_compra" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_proveedor_compra') }}">
+                        <select name="editar_proveedor_compra" id="editar_proveedor_compra" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2">
+                            @foreach($proveedores_array[0] as $proveedores)
+                                <option value="{{$proveedor['COD_PROVEEDOR']}}">{{$proveedor['NOM_PROVEEDOR']}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
-                        Proveedor
-                        <input type="text" name="editar_pago_compra" id="editar_pago_compra" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_pago_compra') }}">
+                        Rol
+                        <select name="editar_pago_compra" id="editar_pago_compra" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2">
+                            @foreach($forma_pago_array[0] as $forma_pago)
+                                <option value="{{$forma_pago['COD_FORMA_PAGO']}}">{{$forma_pago['NOM_FORMA_PAGO']}}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    
                     <div class="form-group">
                         Estado
                         <select name="editar_estado_compra" id="editar_estado_compra" style="width: 70%;" class="form-control bg-light border-0 small">
@@ -233,7 +253,7 @@
                         <i class="fas fa-times-circle fa-sm text-white-50"></i> Cerrar
                     </button>
                 </div>
-                <input type="hidden" id="editar_codigo_compra" name="editar_codigo_compra">
+                <input type="hidden" id="editar_codigo_enc_compra" name="editar_codigo_enc_compra">
             </form>
         </div>
     </div>
@@ -249,7 +269,7 @@
         var total_compra = 0;
         var factura_compra = '';
         var proveedor_compra = 0;
-        var pago_compra = '';
+        var pago_compra = 0;
         var estado_compra = '';
         
         $(document).ready(function(){
@@ -272,15 +292,15 @@
                 fecha_compra = $('#fecha_compra'+cod_enc_compra).val();
                 total_compra = $('#total_compra'+cod_enc_compra).val();
                 factura_compra = $('#factura_compra'+cod_enc_compra).val();
-                proveedor_compra = $('#proveedor_compra'+cod_enc_compra).val();
-                pago_compra = $('#pago_compra'+cod_enc_compra).val();
+                proveedor_compra = $('#proveedor_compra_id'+cod_enc_compra).val();
+                pago_compra = $('#pago_compra_id'+cod_enc_compra).val();
                 estado_compra = $('#estado_compra'+cod_enc_compra).val();
                     
-                $('#editar_codigo_compra').val(cod_enc_compra);
+                $('#editar_codigo_enc_compra').val(cod_enc_compra);
                 $('#editar_fecha_compra').val(fecha_compra);
                 $('#editar_total_compra').val(total_compra);
-                $('#editar_proveedor_compra').val(proveedor_compra);
-                $('#editar_pago_compra').val(pago_compra);
+                document.getElementById("editar_proveedor_compra").selectedIndex = (proveedor_compra-1);
+                document.getElementById("editar_pago_compra").selectedIndex = (pago_compra-1);
                 
                 
                 if(estado_compra == 'SI'){

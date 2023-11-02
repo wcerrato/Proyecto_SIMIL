@@ -28,7 +28,7 @@ class NumeracionesSARController extends Controller
     public function editar_numeracion_sar(Request $request){
 
         $validator = Validator::make($request->all(),[
-            
+         
             'editar_rango_inicial_numeracion_sar' => 'required|integer|between:0,1000000',
             'editar_rango_final_numeracion_sar' => 'required|integer|between:0,1000000',
             'editar_rango_actual_numeracion_sar' => 'required|integer|between:0,1000000',
@@ -47,8 +47,7 @@ class NumeracionesSARController extends Controller
         }else{
 
             HTTP::put('http://127.0.0.1:9000/api/simil/facturas/',[
-                'PV_ACCION' => 'talonario', 
-                'PV_COD_USUARIO' => 'drivera',
+                'PV_ACCION' => 'talonario',
                 'PI_RANGO_INICIAL' => $request->editar_rango_inicial_numeracion_sar,
                 'PI_RANGO_FINAL' => $request->editar_rango_final_numeracion_sar,
                 'PI_RANGO_ACTUAL' => $request->editar_rango_actual_numeracion_sar, 
@@ -58,7 +57,7 @@ class NumeracionesSARController extends Controller
                 'PB_COD_TALONARIO_CAI' => $request->editar_codigo_numeracion_sar
             ]);
 
-            return back()->with('mensaje_guardado','Numeracion sar editado correctamente.');
+            return back()->with('mensaje_guardado','Numeración sar editada correctamente.');
             
         }
         
@@ -71,7 +70,7 @@ class NumeracionesSARController extends Controller
             'rango_inicial_numeracion_sar' => 'required|integer|between:0,1000000',
             'rango_final_numeracion_sar' => 'required|integer|between:0,1000000',
             'rango_actual_numeracion_sar' => 'required|integer|between:0,1000000',
-            'fecha_vencimiento_numeracion_sar' => 'required|date',
+            'fec_vencimiento_numeracion_sar' => 'required|date',
             'num_cai_numeracion_sar' => 'required|integer|between:0,1000000'
             
         ]);
@@ -87,17 +86,16 @@ class NumeracionesSARController extends Controller
             
             HTTP::post('http://127.0.0.1:9000/api/simil/facturas/',[
                 'PV_ACCION' => 'talonario', 
-                'PV_COD_USUARIO' => 'drivera',
                 'PI_RANGO_INICIAL' => $request->rango_inicial_numeracion_sar,
                 'PI_RANGO_FINAL' => $request->rango_final_numeracion_sar,
                 'PI_RANGO_ACTUAL' => $request->rango_actual_numeracion_sar, 
-                'PF_FEC_VENCIMIENTO' => $request->fecha_vencimiento_numeracion_sar, 
+                'PF_FEC_VENCIMIENTO' => $request->fec_vencimiento_numeracion_sar, 
                 'PI_NUM_CAI' => $request->num_cai_numeracion_sar, 
                 'PE_ESTADO' => 'A'
 
             ]);
             
-            return back()->with('mensaje_guardado','Descuento guardado correctamente.');
+            return back()->with('mensaje_guardado','Numeración sar guardada correctamente.');
             
         }
         

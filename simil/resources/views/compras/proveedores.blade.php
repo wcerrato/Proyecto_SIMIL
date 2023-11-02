@@ -30,6 +30,7 @@
         cursor: pointer;
     }
 
+
     
 </style>
 
@@ -38,7 +39,7 @@
         Módulo de Proveedores
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#guardar_proveedor">
-        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Proveedor
+        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar 
     </a>
 </div>
 
@@ -60,44 +61,46 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
-            <th style="width:20%;">NOMBRE</th>
+            <th style="width:10%">ID</th>
+            <th style="width:50%;">NOMBRE DEL PROVEEDOR</th>
             <th style="width:20%;">RTN</th>
-            <th style="width:35%;">DIRECCIÓN</th>
             <th style="width:10%;">TELÉFONO</th>
-            <th style="width:25%;">CORREO</th>
-            <th style="width:10%;">ACTIVO</th>
+            <th style="width:15%;">ESTADO</th>
             <th style="width:10%;">ACCIONES</th>
         </tr>
         
         @foreach($proveedores_array[0] as $proveedor)
         
             <tr>
+            <td>
+                <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="cod_proveedor{{$proveedor['COD_PROVEEDOR']}}" name="cod_proveedor{{$proveedor['COD_PROVEEDOR']}}" value="{{$proveedor['COD_PROVEEDOR']}}">
+                </td>
                 <td>
                     <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="descripcion_proveedor{{$proveedor['COD_PROVEEDOR']}}" name="descripcion_proveedor{{$proveedor['COD_PROVEEDOR']}}" value="{{$proveedor['NOM_PROVEEDOR']}}">
                 </td>
                 <td>
                     <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="rtn_proveedor{{$proveedor['COD_PROVEEDOR']}}" name="rtn_proveedor{{$proveedor['COD_PROVEEDOR']}}" value="{{$proveedor['DNI_RTN']}}">
                 </td>
-                <td>
-                    <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="direccion_proveedor{{$proveedor['COD_PROVEEDOR']}}" name="direccion_proveedor{{$proveedor['COD_PROVEEDOR']}}}}" value="{{$proveedor['PRO_DIRECCION']}}">
+                <td style="display: none;">
+                    <input type="hidden" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="direccion_proveedor{{$proveedor['COD_PROVEEDOR']}}" name="direccion_proveedor{{$proveedor['COD_PROVEEDOR']}}}}" value="{{$proveedor['PRO_DIRECCION']}}">
                 </td>
                 <td>
                     <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="telefono_proveedor{{$proveedor['COD_PROVEEDOR']}}" name="telefono_proveedor{{$proveedor['COD_PROVEEDOR']}}" value="{{$proveedor['PRO_TELEFONO']}}">
                 </td>
-                <td>
-                    <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="correo_proveedor{{$proveedor['COD_PROVEEDOR']}}" name="correo_proveedor{{$proveedor['COD_PROVEEDOR']}}" value="{{$proveedor['PRO_CORREO']}}">
+                <td style="display: none;">
+                    <input type="hidden" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="correo_proveedor{{$proveedor['COD_PROVEEDOR']}}" name="correo_proveedor{{$proveedor['COD_PROVEEDOR']}}" value="{{$proveedor['PRO_CORREO']}}">
                 </td>
                 
                 @if( $proveedor['ESTADO'] == 'A' )
                 
                     <td>
-                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_proveedor{{$proveedor['COD_PROVEEDOR']}}" name="estado_proveedor{{$proveedor['COD_PROVEEDOR']}}" value="SI">
+                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_proveedor{{$proveedor['COD_PROVEEDOR']}}" name="estado_proveedor{{$proveedor['COD_PROVEEDOR']}}" value="ACTIVO">
                     </td>
                 
                 @else
                 
                     <td>
-                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_proveedor{{$proveedor['COD_PROVEEDOR']}}" name="estado_proveedor{{$proveedor['COD_PROVEEDOR']}}" value="NO">
+                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_proveedor{{$proveedor['COD_PROVEEDOR']}}" name="estado_proveedor{{$proveedor['COD_PROVEEDOR']}}" value="INACTIVO">
                     </td>
                 
                 @endif
@@ -139,19 +142,24 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="descripcion_proveedor" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Nombre" aria-describedby="basic-addon2" value="{{ old('descripcion_proveedor') }}">
+                        Nombre del Proveedor
+                        <input type="text" name="descripcion_proveedor" oninput="mayus(this);" style="width: 70%;"  class="form-control custom-input " aria-describedby="basic-addon2" value="{{ old('descripcion_proveedor') }}">
+                    </div>
+                    RTN
+                    <div class="form-group">
+                        <input type="text" name="rtn_proveedor"  style="width: 70%;" class="form-control custom-input "  aria-describedby="basic-addon2" value="{{ old('rtn_proveedor') }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="rtn_proveedor"  style="width: 70%;" class="form-control bg-light border-0 small" placeholder="RTN" aria-describedby="basic-addon2" value="{{ old('rtn_proveedor') }}">
+                        Dirección
+                        <input type="text" name="direccion_proveedor" oninput="mayus(this);" style="width: 70%;"  class="form-control custom-input " aria-describedby="basic-addon2" value="{{ old('direccion_proveedor') }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="direccion_proveedor" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Dirección" aria-describedby="basic-addon2" value="{{ old('direccion_proveedor') }}">
+                        Teléfono
+                        <input type="text" name="telefono_proveedor" style="width: 70%;" class="form-control custom-input "  aria-describedby="basic-addon2" value="{{ old('telefono_proveedor') }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="telefono_proveedor" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Teléfono" aria-describedby="basic-addon2" value="{{ old('telefono_proveedor') }}">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="correo_proveedor" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Correo" aria-describedby="basic-addon2" value="{{ old('correo_proveedor') }}">
+                        Correo
+                        <input type="text" name="correo_proveedor" style="width: 70%;" class="form-control custom-input "  aria-describedby="basic-addon2" value="{{ old('correo_proveedor') }}">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -191,16 +199,20 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        Nombre
-                        <input type="text" name="editar_descripcion_proveedor" id="editar_descripcion_proveedor" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_proveedor') }}">
+                        ID
+                        <input type="text" readonly="readonly" name="editar_codigo_proveedor" id="editar_codigo_proveedor" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_codigo_proveedor') }}">
+                    </div>
+                    <div class="form-group">
+                        Nombre de Proveedor
+                        <input type="text" name="editar_descripcion_proveedor" id="editar_descripcion_proveedor" oninput="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_proveedor') }}">
                     </div>
                     <div class="form-group">
                         RTN
                         <input type="text" name="editar_rtn_proveedor" id="editar_rtn_proveedor" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_rtn_proveedor') }}">
                     </div>
                     <div class="form-group">
-                        Dirección
-                        <input type="text" name="editar_direccion_proveedor" id="editar_direccion_proveedor" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_direccion_proveedor') }}">
+                       Dirección
+                        <input type="text" name="editar_direccion_proveedor" id="editar_direccion_proveedor" oninput="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_direccion_proveedor') }}">
                     </div>
                     <div class="form-group">
                         Teléfono
@@ -210,11 +222,12 @@
                         Correo
                         <input type="text" name="editar_correo_proveedor" id="editar_correo_proveedor" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_correo_proveedor') }}">
                     </div>
+                    
                     <div class="form-group">
                         Estado
                         <select name="editar_estado_proveedor" id="editar_estado_proveedor" style="width: 70%;" class="form-control bg-light border-0 small">
-                            <option value="A">SI</option>
-                            <option value="I">NO</option>
+                            <option value="A">ACTIVO</option>
+                            <option value="I">INACTIVO</option>
                         </select>
                     </div>
                 </div>
@@ -226,7 +239,7 @@
                         <i class="fas fa-times-circle fa-sm text-white-50"></i> Cerrar
                     </button>
                 </div>
-                <input type="hidden" id="editar_codigo_proveedor" name="editar_codigo_proveedor">
+                    <!--<input type="hidden" id="editar_codigo_proveedor" name="editar_codigo_proveedor"> -->
             </form>
         </div>
     </div>
@@ -239,9 +252,9 @@
         
         var cod_proveedor = 0;
         var descripcion_proveedor = '';
-        var rtn_proveedor = 0;
+        var rtn_proveedor = '';
         var direccion_proveedor = '';
-        var telefono_proveedor = 0;
+        var telefono_proveedor = '';
         var correo_proveedor = '';
         var estado_proveedor = '';
         
@@ -259,7 +272,7 @@
             
             $(".btnEditar").click(function(){
                 
-                $("#editar_descuentos").modal('show');
+                $("#editar_proveedor").modal('show');
                 cod_proveedor = $(this).data('id');
 
                 descripcion_proveedor = $('#descripcion_proveedor'+cod_proveedor).val();
@@ -276,26 +289,31 @@
                 $('#editar_telefono_proveedor').val(telefono_proveedor);
                 $('#editar_correo_proveedor').val(correo_proveedor);
                 
-                if(estado_proveedor == 'SI'){
+                if(estado_categoria == 'ACTIVO'){
                     
-                    document.getElementById("editar_estado_proveedor").selectedIndex = 0;
+                    document.getElementById("editar_codigo_proveedor").selectedIndex = 0;
                     
                 }else{
                     
-                    document.getElementById("editar_estado_proveedor").selectedIndex = 1;
+                    document.getElementById("editar_codigo_proveedor").selectedIndex = 1;
                     
                 }
                 
             });
             
         });
-
-        
-        function mayus(e) {
-        e.value = e.value.toUpperCase();
-    }
-
-
-        
+   
     </script>
+
+
+
+
+<!-- Validar solo Mayusculas en el txt -->
+  <script type="text/javascript">
+    function mayus(e) {
+      e.value = e.value.toUpperCase();
+    }
+    </script>
+
+
 @endsection

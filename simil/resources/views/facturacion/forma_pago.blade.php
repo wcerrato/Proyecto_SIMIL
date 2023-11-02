@@ -38,7 +38,7 @@
         Módulo de Formas de Pago
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#guardar_forma_pago">
-        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Forma de Pago
+        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar
     </a>
 </div>
 
@@ -60,8 +60,9 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
+            <th style="width:10%">ID</th>
             <th style="width:60%">NOMBRE DE FORMA DE PAGO</th>
-            <th style="width:10%">ACTIVO</th>
+            <th style="width:10%">ESTADO</th>
             <th style="width:10%">ACCIONES</th>
         </tr>
         
@@ -69,19 +70,22 @@
         
             <tr>
                 <td>
+                <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="cod_forma_pago{{$forma_pago['COD_FORMA_PAGO']}}" name="cod_forma_pago{{$forma_pago['COD_FORMA_PAGO']}}" value="{{$forma_pago['COD_FORMA_PAGO']}}">
+                </td>
+                <td>
                     <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="nom_forma_pago{{$forma_pago['COD_FORMA_PAGO']}}" name="nom_forma_pago{{$forma_pago['COD_FORMA_PAGO']}}" value="{{$forma_pago['NOM_FORMA_PAGO']}}">
                 </td>
                 
                 @if( $forma_pago['ESTADO'] == 'A' )
                 
                     <td>
-                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_forma_pago{{$forma_pago['COD_FORMA_PAGO']}}" name="estado_forma_pago{{$forma_pago['COD_FORMA_PAGO']}}" value="SI">
+                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_forma_pago{{$forma_pago['COD_FORMA_PAGO']}}" name="estado_forma_pago{{$forma_pago['COD_FORMA_PAGO']}}" value="ACTIVO">
                     </td>
                 
                 @else
                 
                     <td>
-                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_forma_pago{{$forma_pago['COD_FORMA_PAGO']}}" name="estado_forma_pago{{$forma_pago['COD_FORMA_PAGO']}}" value="NO">
+                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_forma_pago{{$forma_pago['COD_FORMA_PAGO']}}" name="estado_forma_pago{{$forma_pago['COD_FORMA_PAGO']}}" value="INACTIVO">
                     </td>
                 
                 @endif
@@ -122,7 +126,8 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="descripcion_forma_pago" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripción" aria-describedby="basic-addon2" value="{{ old('descripcion_forma_pago') }}">
+                        Forma de Pago
+                        <input type="text" name="descripcion_forma_pago"  oninput="mayus(this);" style="width: 70%;" class="form-control custom-input " aria-describedby="basic-addon2" value="{{ old('descripcion_forma_pago') }}">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -162,14 +167,18 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        Descripción
-                        <input type="text" name="editar_descripcion_forma_pago" onkeyup="mayus(this);" id="editar_descripcion_forma_pago" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_forma_pago') }}">
+                        ID
+                        <input type="text" readonly="readonly" name="editar_codigo_forma_pago" id="editar_codigo_forma_pago" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_codigo_forma_pago') }}">
+                    </div>
+                    <div class="form-group">
+                        Nombre de Forma de Pago
+                        <input type="text" name="editar_descripcion_forma_pago" oninput="mayus(this);" id="editar_descripcion_forma_pago" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_forma_pago') }}">
                     </div>
                     <div class="form-group">
                         Estado
                         <select name="editar_estado_forma_pago" id="editar_estado_forma_pago" style="width: 70%;" class="form-control bg-light border-0 small">
-                            <option value="A">SI</option>
-                            <option value="I">NO</option>
+                            <option value="A">ACTIVO</option>
+                            <option value="I">INACTIVO</option>
                         </select>
                     </div>
                 </div>
@@ -181,7 +190,7 @@
                         <i class="fas fa-times-circle fa-sm text-white-50"></i> Cerrar
                     </button>
                 </div>
-                <input type="hidden" id="editar_codigo_forma_pago" name="editar_codigo_forma_pago">
+                 <!--  <input type="hidden" id="editar_codigo_forma_pago" name="editar_codigo_forma_pago"> -->
             </form>
         </div>
     </div>
@@ -219,7 +228,7 @@
                 $('#editar_codigo_forma_pago').val(cod_forma_pago);
                 $('#editar_descripcion_forma_pago').val(nom_forma_pago);
                 
-                if(estado_forma_pago == 'SI'){
+                if(estado_forma_pago == 'ACTIVO'){
                     
                     document.getElementById("editar_estado_forma_pago").selectedIndex = 0;
                     
@@ -233,10 +242,17 @@
             
         });
         
-        function mayus(e) {
-        e.value = e.value.toUpperCase();
-        }
 
 
     </script>
+
+   <!-- Validar solo Mayusculas en el txt -->
+   <script type="text/javascript">
+    function mayus(e) {
+    e.value = e.value.toUpperCase();
+    }
+    </script>
+
+
+
 @endsection

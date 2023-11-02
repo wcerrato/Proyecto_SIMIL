@@ -38,7 +38,7 @@
         Módulo de Descuentos
     </h1>
     <a href="#" style="background-color: #1cc88a; color: white;" class="d-none d-sm-inline-block btn btn-sm shadow-sm" data-toggle="modal" data-target="#guardar_descuentos">
-        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Descuento
+        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar 
     </a>
 </div>
 
@@ -60,15 +60,19 @@
     
     <table style="width:90%; margin: 0 auto;" border="1" >
         <tr style="background-color: #4e73df;  color: white; text-align: center;">
-            <th style="width:60%;">DESCRIPCIÓN</th>
+            <th style="width:10%;">ID</th>
+            <th style="width:60%;">NOMBRE DEL DESCUENTO</th>
             <th style="width:10%;">PORCENTAJE</th>
-            <th style="width:10%;">ACTIVO</th>
+            <th style="width:10%;">ESTADO</th>
             <th style="width:10%;">ACCIONES</th>
         </tr>
 
         @foreach($descuentos_array[0] as $descuentos)
         
             <tr>
+            <td>
+                <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="cod_descuento{{$descuentos['COD_DESCUENTO']}}" name="cod_descuento{{$descuentos['COD_DESCUENTO']}}" value="{{$descuentos['COD_DESCUENTO']}}">
+                </td>
                 <td>
                     <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="nom_descuento{{$descuentos['COD_DESCUENTO']}}" name="nom_descuento{{$descuentos['COD_DESCUENTO']}}" value="{{$descuentos['NOM_DESC']}}">
                 </td>
@@ -79,13 +83,13 @@
                 @if( $descuentos['ESTADO'] == 'A' )
                 
                     <td>
-                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_descuento{{$descuentos['COD_DESCUENTO']}}" name="estado_descuento{{$descuentos['COD_DESCUENTO']}}" value="SI">
+                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_descuento{{$descuentos['COD_DESCUENTO']}}" name="estado_descuento{{$descuentos['COD_DESCUENTO']}}" value="ACTIVO">
                     </td>
                 
                 @else
                 
                     <td>
-                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_descuento{{$descuentos['COD_DESCUENTO']}}" name="estado_descuento{{$descuentos['COD_DESCUENTO']}}" value="NO">
+                        <input type="text" style="width:100%; color: grey; background: transparent; border: none; pointer-events: none;" id="estado_descuento{{$descuentos['COD_DESCUENTO']}}" name="estado_descuento{{$descuentos['COD_DESCUENTO']}}" value="INACTIVO">
                     </td>
                 
                 @endif
@@ -126,10 +130,12 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        <input type="text" name="descripcion_descuento" onkeyup="mayus(this);"  style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Descripción" aria-describedby="basic-addon2" value="{{ old('descripcion_descuento') }}">
+                    Nombre del Descuento
+                        <input type="text" name="descripcion_descuento"  oninput="mayus(this);" style="width: 70%;" class="form-control custom-input " aria-describedby="basic-addon2" value="{{ old('descripcion_descuento') }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="porcentaje_descuento" style="width: 70%;" class="form-control bg-light border-0 small" placeholder="Porcentaje" aria-describedby="basic-addon2" value="{{ old('porcentaje_descuento') }}">
+                        Porcentaje
+                        <input type="text" name="porcentaje_descuento" style="width: 70%;" class="form-control custom-input " aria-describedby="basic-addon2" value="{{ old('porcentaje_descuento') }}">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -169,8 +175,12 @@
                     </div>
                     @endif
                     <div class="form-group">
-                        Descripción
-                        <input type="text" name="editar_descripcion_descuento" id="editar_descripcion_descuento" onkeyup="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_descuento') }}">
+                        ID
+                        <input type="text" readonly="readonly" name="editar_codigo_descuento" id="editar_codigo_descuento" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_codigo_descuento') }}">
+                    </div>
+                    <div class="form-group">
+                        Nombre del Descuento
+                        <input type="text" name="editar_descripcion_descuento" id="editar_descripcion_descuento" oninput="mayus(this);" style="width: 70%;" class="form-control bg-light border-0 small" aria-describedby="basic-addon2" value="{{ old('editar_descripcion_descuento') }}">
                     </div>
                     <div class="form-group">
                         Porcentaje
@@ -179,8 +189,8 @@
                     <div class="form-group">
                         Estado
                         <select name="editar_estado_descuento" id="editar_estado_descuento" style="width: 70%;" class="form-control bg-light border-0 small">
-                            <option value="A">SI</option>
-                            <option value="I">NO</option>
+                            <option value="A">ACTIVO</option>
+                            <option value="I">INACTIVO</option>
                         </select>
                     </div>
                 </div>
@@ -192,7 +202,7 @@
                         <i class="fas fa-times-circle fa-sm text-white-50"></i> Cerrar
                     </button>
                 </div>
-                <input type="hidden" id="editar_codigo_descuento" name="editar_codigo_descuento">
+                  <!-- <input type="hidden" id="editar_codigo_descuento" name="editar_codigo_descuento"> -->
             </form>
         </div>
     </div>
@@ -233,7 +243,7 @@
                 $('#editar_descripcion_descuento').val(nom_desc);
                 $('#editar_porcentaje_descuento').val(porcentaje_descuento);
                 
-                if(estado_descuento == 'SI'){
+                if(estado_descuento == 'ACTIVO'){
                     
                     document.getElementById("editar_estado_descuento").selectedIndex = 0;
                     
@@ -247,10 +257,17 @@
             
         });
         
-        function mayus(e) {
-        e.value = e.value.toUpperCase();
-        }
-
+    
         
     </script>
+
+    </script>
+
+    <!-- Validar solo Mayusculas en el txt -->
+    <script type="text/javascript">
+    function mayus(e) {
+    e.value = e.value.toUpperCase();
+    }
+    </script>
+
 @endsection

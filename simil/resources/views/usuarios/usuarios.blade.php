@@ -308,7 +308,7 @@
                 document.getElementById("editar_rol_usuario").selectedIndex = (rol_usuario-1);
 
                 if(estado_usuario == 'SI'){
-                    
+                    +
                     document.getElementById("editar_estado_usuario").selectedIndex = 0;
                     
                 }else{

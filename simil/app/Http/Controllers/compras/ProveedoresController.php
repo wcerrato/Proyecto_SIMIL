@@ -24,14 +24,15 @@ class ProveedoresController extends Controller
         }
         
     }
-    
+   
     public function editar_proveedor(Request $request){
 
         $validator = Validator::make($request->all(),[
             
-            'editar_descripcion_proveedor' => 'required|min:5|max:50',
+            'editar_codigo_proveedor' => 'required',  
+            'editar_descripcion_proveedor' => 'required|min:5|max:150',
             'editar_rtn_proveedor' => 'required|min:14|max:14',
-            'editar_direccion_proveedor' => 'required|min:5|max:50',
+            'editar_direccion_proveedor' => 'required|min:5|max:500',
             'editar_telefono_proveedor' => 'required|min:8|max:8',
             'editar_correo_proveedor' => 'required|email:rfc'
             
@@ -50,10 +51,10 @@ class ProveedoresController extends Controller
                 'PV_ACCION' => 'PROVEEDOR', 
                 'PV_NOM_PROVEEDOR' => $request->editar_descripcion_proveedor,
                 'PV_DNI_RTN' => $request->editar_rtn_proveedor,
-                'PB_COD_DIRECCION' => $request->editar_direccion_proveedor, 
-                'PB_COD_TELEFONO' => $request->editar_telefono_proveedor,
-                'PB_COD_CORREO' => $request->editar_correo_proveedor,
-                'PE_ESTADO' => $request->editar_estado_proveedor,
+                'PV_PRO_DIRECCION' => $request->editar_direccion_proveedor, 
+                'PV_PRO_TELEFONO' => $request->editar_telefono_proveedor,
+                'PV_PRO_CORREO' => $request->editar_correo_proveedor,
+                'PE_ESTADO' => $request->editar_estado_proveedor, 
                 'PB_COD_PROVEEDOR' => $request->editar_codigo_proveedor
             ]);
 
@@ -67,9 +68,9 @@ class ProveedoresController extends Controller
         
         $validator = Validator::make($request->all(),[
             
-            'descripcion_proveedor' => 'required|min:5|max:50',
+            'descripcion_proveedor' => 'required|min:5|max:150',
             'rtn_proveedor' => 'required|min:14|max:14',
-            'direccion_proveedor' => 'required|min:5|max:50',
+            'direccion_proveedor' => 'required|min:5|max:500',
             'telefono_proveedor' => 'required|min:8|max:8',
             'correo_proveedor' => 'required|email:rfc'
             

@@ -127,8 +127,7 @@ Route::put('/usuarios/objetos', [App\Http\Controllers\usuarios\ObjetosController
 Route::get('/verificar_objeto/{objetos}', [App\Http\Controllers\usuarios\ObjetosController::class, 'verificar_objeto']);
 
 //RUTAS MODULO DE USUARIOS - BITACORA
-Route::get('/usuarios/bitacora', [App\Http\Controllers\usuarios\BitacoraController::class, 'index']);
-Route::get('/bitacora', [BitacoraController::class, 'index'])->name('bitacora.index');
+Route::get('/usuarios/bitacora', [App\Http\Controllers\usuarios\BitacoraController::class, 'index'])->name('bitacora.index');
 
 //RUTAS MODULO DE USUARIOS - RECUPERACION DE CONTRASEÑA
 Route::get('/usuarios/recuperacion', [App\Http\Controllers\usuarios\RecuperacionController::class, 'index']);
